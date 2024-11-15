@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&K東京7日6夜完美遊行程</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navList = document.querySelector('nav ul');
+
+        menuToggle.addEventListener('click', function() {
+            navList.classList.toggle('active');
+        });
+    });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const backgrounds = [
+            'https://images.unsplash.com/photo-1490806843957-31f4c9a91c65', // 富士山
+            'https://images.unsplash.com/photo-1542051841857-5f90071e7989', // 新宿御苑
+            'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d', // 上野公園櫻花
+            'https://images.unsplash.com/photo-1536098561742-ca998e48cbcc', // 明治神宮
+            'https://images.unsplash.com/photo-1617339860293-8c1c4b9b2f76'  // 淺草寺
+        ];
+        
+        let currentIndex = 0;
+        const header = document.querySelector('.page-header');
+        
+        // 設置初始背景
+        header.style.backgroundImage = `linear-gradient(rgba(37, 99, 235, 0.6), rgba(37, 99, 235, 0.6)), url('${backgrounds[0]}')`;
+        
+        // 每60秒切換一次背景
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % backgrounds.length;
+            header.style.opacity = 0;
+            
+            setTimeout(() => {
+                header.style.backgroundImage = `linear-gradient(rgba(37, 99, 235, 0.6), rgba(37, 99, 235, 0.6)), url('${backgrounds[currentIndex]}')`;
+                header.style.opacity = 1;
+            }, 500);
+        }, 60000);
+    });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('.page-header');
+        
+        // 創建雪花容器
+        const snowContainer = document.createElement('div');
+        snowContainer.className = 'snow-container';
+        header.appendChild(snowContainer);
+        
+        // 生成雪花
+        function createSnowflakes() {
+            for(let i = 0; i < 50; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = 3 + Math.random() * 7 + 's';
+                snowflake.style.animationDelay = Math.random() * 5 + 's';
+                snowflake.style.opacity = Math.random();
+                snowContainer.appendChild(snowflake);
+            }
+        }
+        
+        createSnowflakes();
+    });
+    </script>
+    <style>
+    .snow-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .snowflake {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: white;
+        border-radius: 50%;
+        animation: snowfall linear infinite;
+    }
+
+    @keyframes snowfall {
+        0% {
+            transform: translateY(-10px) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(300px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* 不同大小的雪花 */
+    .snowflake:nth-child(3n) {
+        width: 4px;
+        height: 4px;
+    }
+
+    .snowflake:nth-child(3n + 1) {
+        width: 8px;
+        height: 8px;
+    }
+
+    /* 不同飄落路徑 */
+    .snowflake:nth-child(5n) {
+        animation-name: snowfall-zigzag;
+    }
+
+    @keyframes snowfall-zigzag {
+        0% {
+            transform: translateY(-10px) translateX(0) rotate(0deg);
+            opacity: 1;
+        }
+        50% {
+            transform: translateY(150px) translateX(20px) rotate(180deg);
+        }
+        100% {
+            transform: translateY(300px) translateX(-20px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1>D&K東京7日6夜完美遊行程</h1>
+        <p class="sub-title">2024年冬季版 | 住宿：秋葉原APA Hotel Uenohirokoji</p>
+    </div>
+
+    <div class="quick-nav">
+        <div class="nav-item">
+            <i class="icon">ℹ️</i>
+            <a href="#notice">行前須知</a>
+        </div>
+        <div class="nav-item">
+            <i class="icon">✈️</i>
+            <a href="#day1">Day 1 抵</a>
+        </div>
+        <div class="nav-item">
+            <i class="icon">🗼</i>
+            <a href="#day2">Day 2 淺草寺</a>
+        </div>
+        <div class="nav-item">
+            <i class="icon">🎢</i>
+            <a href="#day3">Day 3 迪士尼</a>
+        </div>
+        <div class="nav-item">
+            <i class="icon">🛍️</i>
+            <a href="#day4">Day 4 逛</a>
+        </div>
+        <div class="nav-item">
+            <i class="icon">⚡</i>
+            <a href="#day5">Day 5 哈利波特</a>
+        </div>
+        <div class="nav-item">
+            <i class="icon">🌆</i>
+            <a href="#day6">Day 6 秋葉原</a>
+        </div>
+        <div class="nav-item">
+            <i class="icon">🛫</i>
+            <a href="#day7">Day 7 返程</a>
+        </div>
+    </div>
+
+    <main>
+        <section id="notice" class="notice-section">
+            <h2>行前準備</h2>
+            <div class="info-container">
+                <div class="info-card">
+                    <h3>必要證件與物品</h3>
+                    <ul>
+                        <li>護照（有效期需超過6個月）</li>
+                        <li>日本電子簽證（2024年起必須）
+                            <br>- 申請網址：https://vjw-lp.digital.go.jp
+                            <br>- 提前14天申請
+                            <br>- 免費申請，有效期90天</li>
+                        <li>現金（建議換3-4萬日圓）
+                            <br>- 2024年11月匯率約1:4.5
+                            <br>- 機場換匯優惠時段9:00-15:00</li>
+                        <li>信用卡（VISA/Master/JCB）
+                            <br>- 需開啟海外交易功能
+                            <br>- 建議帶2張以上備用</li>
+                        <li>防寒衣物（11月氣溫12-18℃）
+                            <br>- 建議帶薄外套及圍巾
+                            <br>- 雨具（11月降雨機率40%）</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>交通資訊（2024最新）</h3>
+                    <ul>
+                        <li>西瓜卡（Pasmo）：
+                            <br>- 押金2,000日圓（可退）
+                            <br>- 可用Apple Pay購買</li>
+                        <li>地鐵票券優惠：
+                            <br>- 72小時券：1,500日圓
+                            <br>- 觀光周遊券：2,000日圓（新增）</li>
+                        <li>機場交通更新：
+                            <br>- 京成Skyliner：2,570日圓
+                            <br>- NEX成田特快：3,200日圓
+                            <br>- 利木津巴士：3,400日圓</li>
+                        <li>新增自動售票機支援：
+                            <br>- 繁體中文介面
+                            <br>- 行動支付（信用卡/Apple Pay）</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>實用APP（2024版）</h3>
+                    <ul>
+                        <li>Japan Travel by NAVITIME
+                            <br>- 新增AI路線規劃
+                            <br>- 支援離線地圖</li>
+                        <li>Google Maps
+                            <br>- 新增室內AR導航
+                            <br>- 即時車站擁擠度</li>
+                        <li>乗換案内
+                            <br>- 即時列車延誤資訊
+                            <br>- 支援多語言</li>
+                        <li>日本天氣雷達
+                            <br>- 精準到分鐘的降雨預報
+                            <br>- 防災資訊推送</li>
+                        <li>翻譯官（新版）
+                            <br>- 支援離線翻譯
+                            <br>- 圖片即時翻譯</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>2024特別提醒</h3>
+                    <ul>
+                        <li>消費稅政策：
+                            <br>- 一般商品：10%
+                            <br>- 外帶食品：8%
+                            <br>- 免稅條件：5,000日圓以</li>
+                        <li>新冠相關
+                            <br>- 不需PCR證明
+                            <br>- 建議戴口罩搭電車</li>
+                        <li>支付方式更新：
+                            <br>- 支援PayPay/LINE Pay
+                            <br>- 大部分商店可用信用卡</li>
+                        <li>11月特別活動：
+                            <br>- 紅葉季節限定活動
+                            <br>- 聖誕燈飾提前點燈</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>省錢技巧（2024版）</h3>
+                    <ul>
+                        <li>餐飲預算參考：
+                            <br>- 便利店早餐：500-800日圓
+                            <br>- 連鎖餐廳午餐：900-1,200日圓
+                            <br>- 一般晚餐：2,000-3,000日圓</li>
+                        <li>購物折扣資訊：
+                            <br>- 百貨公司週年慶（11月）
+                            <br>- 商店街特賣活動
+                            <br>- 藥妝店會員優惠</li>
+                        <li>交通省錢：
+                            <br>- 使用一日券
+                            <br>- 步行轉乘優惠
+                            <br>- 避開特急列車</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>緊急聯絡（已更新）</h3>
+                    <ul>
+                        <li>緊急電話：
+                            <br>- 警察：110
+                            <br>- 救護車：119
+                            <br>- 24小時中文協助：03-3503-4400</li>
+                        <li>台灣駐日本代表處：
+                            <br>- 電話：03-3280-7811
+                            <br>- 地址：東京都港區白金台5-20-2
+                            <br>- 營業：9:00-17:00（週一至五）</li>
+                        <li>醫療資訊：
+                            <br>- 國際醫療機構查詢：03-5285-8181
+                            <br>- 支援中文的藥局清單已更新</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="itinerary" class="daily-plan">
+            <h2>每日行程</h2>
+            <div class="day-cards">
+                <article class="day-card" id="day1">
+                    <h3>Day 1 - 成田機場・秋葉原（2024年12月冬季版）</h3>
+                    <div class="timeline">
+                        <div class="time-block">
+                            <span class="time">18:00</span>
+                            <div class="activity activity-transport">
+                                <h4>抵達成田機場第二航廈</h4>
+                                <p class="notice-warning">12月天氣提醒：
+                                    <br>- 夜間氣溫2-5℃
+                                    <br>- 機場到市區溫差大
+                                    <br>- 建議穿著厚外套
+                                    <br>- 準備圍巾手套</p>
+                                <ul>
+                                    <li>入境準備（2024最新）：
+                                        <br>- Visit Japan Web提前登錄（推薦）
+                                        <br>- 護照及電子簽證確認
+                                        <br>- 預計入境流程30-45分鐘</li>
+                                    <li>交通票券（B1F JR EAST售票處）：
+                                        <br>- Pasmo IC卡：預付2,500日圓（含500日圓押金）
+                                        <br>- 72小時地鐵券：1,600日圓（2024冬季優惠）</li>
+                                    <li>上網服務（1F各電信櫃檯，營業至22:00）：
+                                        <br>- 7日無限流量eSIM：3,500日圓（新推出）
+                                        <br>- 實體SIM卡：4,500日圓
+                                        <br>- Pocket WiFi：900日圓/天</li>
+                                </ul>
+                                <p class="notice-tips">建議：可在機場7-11購買暖暖包（一包約250日圓）</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">19:00-20:00</span>
+                            <div class="activity activity-transport">
+                                <h4>前往APA Hotel Uenohirokoji</h4>
+                                <p class="notice-important">2024年冬季交通更新：</p>
+                                <ul>
+                                    <li>方案1（推薦）：京成Skyliner
+                                        <br>- 路線：成田機場第2航廈 → 日暮里站 → 上野站
+                                        <br>- 時間：41分鐘（準點率99.9%）
+                                        <br>- 費用：2,570日圓
+                                        <br>- 班次：每20分鐘一班（末班車23:00）
+                                        <br>- 優惠：官網預約可享2,200日圓特價</li>
+                                    <li>方案2：JR NEX成田特快
+                                        <br>- 路線：成田機場 → 上野站（直達）
+                                        <br>- 時間：55分鐘
+                                        <br>- 費用：3,200日圓
+                                        <br>- 班次：每30分鐘一班（末班車21:44）
+                                        <br>- 優惠：外國人可購買單程優惠券2,900日圓</li>
+                                    <li>上野站 → 飯店：
+                                        <br>- 步行8分鐘（有電梯和手扶梯）
+                                        <br>- 新設置行李寄送服務（500日圓/件）
+                                        <br>- 建議使用Google Maps導航</li>
+                                </ul>
+                                <p class="notice-tips">2024年新服務：上野站設置AI導航機器人，支援中文諮詢</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">20:30-22:00</span>
+                            <div class="activity activity-sightseeing">
+                                <h4>秋葉原夜景散步</h4>
+                                <p class="info-location">路線：飯店 → 秋葉原電器街（步行10分鐘）</p>
+                                <p class="notice-important">2024冬季限定活動：
+                                    <br>- 秋葉原聖誕夢幻燈飾（17:00-24:00）
+                                    <br>- 電器街光雕投影秀（每30分鐘一場）
+                                    <br>- UDX廣場聖誕市集（至22:00）</p>
+                                <ul>
+                                    <li>必訪景點（2024冬季營業時間）：
+                                        <br>- SEGA秋葉原2號館（營業至23:30）
+                                        <br>- Yodobashi Camera（營業至22:00）
+                                        <br>- Animate（冬季限定商品，營業至21:00）
+                                        <br>- Don Quijote唐吉訶德（24小時營業）</li>
+                                    <li>推薦晚餐：
+                                        <br>- 肉食堂秋葉原本店（營業至23:00）
+                                        <br>- 冬季限定：和牛壽喜燒套餐2,480日圓
+                                        <br>- 特別優惠：出示護照享9折
+                                        <br>- 建議預約（可能需排隊30-40分鐘）</li>
+                                    <li>便利設施：
+                                        <br>- 新設置觀光諮詢處（營業至21:00）
+                                        <br>- 暖房休息區（UDX大樓B1F）
+                                        <br>- 行李寄存櫃（500日圓/3小時）
+                                        <br>- 免費WiFi熱點（秋葉原站周邊）</li>
+                                </ul>
+                                <p class="notice-warning">12月特別提醒：
+                                    <br>- 夜間氣溫可能降至1-3℃
+                                    <br>- 部分商店22:00後打烊
+                                    <br>- 最後點餐時間通常提前30分鐘
+                                    <br>- 建議準備保暖衣物</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="day-card" id="day2">
+                    <h3>Day 2 - 淺草寺・晴空塔（2024年12月聖誕版）</h3>
+                    <div class="timeline">
+                        <div class="time-block">
+                            <span class="time">08:30-11:30</span>
+                            <div class="activity activity-sightseeing">
+                                <h4>淺草寺・仲見世通り</h4>
+                                <p class="notice-tips">早晨參拜人少，建議先去淺草寺</p>
+                                <ul>
+                                    <li>淺草寺參拜路線：
+                                        <br>- 雷門 → 仲見世通り → 寶藏門
+                                        <br>- 本堂參拜（免費）
+                                        <br>- 五重塔拍照點（最佳攝影時間9:00-10:00）</li>
+                                    <li>仲見世通商店街：
+                                        <br>- 推薦店鋪：舟和本店（人形燒，8個900日圓）
+                                        <br>- 淺草寧々福（天婦羅定食2,200日圓）
+                                        <br>- 新開幕：和菓子工房（冬季限定口味）</li>
+                                    <li>12月特別活動：
+                                        <br>- 淺草寺除夜の鐘（12/31限定）
+                                        <br>- 聖誕市集（12/1-25，10:00-20:00）
+                                        <br>- 淺草文化觀光中心展望台（免費）
+                                        <br>- 冬季光雕投影（16:30-22:00）</li>
+                                </ul>
+                                <p class="notice-warning">12月天氣提醒：早晨氣溫2-7℃，建議穿著保暖衣物</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">12:00-16:00</span>
+                            <div class="activity activity-sightseeing">
+                                <h4>晴空塔・周邊購物</h4>
+                                <p class="info-transport">路線：淺草站 → 步行15分鐘或搭乘淺草線（1站，180日圓）</p>
+                                <ul>
+                                    <li>晴空塔門票（2024年12月更新）：
+                                        <br>- 展望台（350m）：3,400日圓
+                                        <br>- 頂層套票（450m）：4,400日圓
+                                        <br>- Fast Skip通道：+1,200日圓
+                                        <br>- 官網預約可享95折優惠</li>
+                                    <li>2024冬季限定活動：
+                                        <br>- 冬季夢幻燈飾（16:00-23:00）
+                                        <br>- 聖誕主題特展（需另購票）
+                                        <br>- 冬季限定打卡點4處</li>
+                                    <li>SOLAMACHI購物：
+                                        <br>- Pokemon Center（聖誕限定商品）
+                                        <br>- Studio Ghibli（冬季新品）
+                                        <br>- 2024冬季限定商品區
+                                        <br>- 使用信用卡滿10,000日圓享95折</li>
+                                </ul>
+                                <p class="notice-tips">建議14:30-15:30之間上觀景台，可同時看日景和夜景</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">16:30-19:30</span>
+                            <div class="activity activity-sightseeing">
+                                <h4>隅田川夜景・淺草夜市</h4>
+                                <p class="info-transport">路線：晴空塔 → 淺草站（步行15分鐘）</p>
+                                <ul>
+                                    <li>隅田川遊船（新航線）：
+                                        <br>- 冬季限定夜景航線
+                                        <br>- 時間：40分鐘
+                                        <br>- 費用：1,800日圓
+                                        <br>- 預約網址：suijobus.co.jp</li>
+                                    <li>淺草夜市（新企劃）：
+                                        <br>- 位置：淺草六區
+                                        <br>- 營業：16:00-21:00
+                                        <br>- 特色：昭和風美食街
+                                        <br>- 推薦：關東煮、烤串、清酒</li>
+                                    <li>晚餐推薦：
+                                        <br>- 淺草今半：壽喜燒套餐5,500日圓
+                                        <br>- 大黑家：天婦羅定食2,200日圓
+                                        <br>- 新店：淺草魚河岸（海鮮丼2,800日圓）</li>
+                                </ul>
+                                <p class="notice-warning">12月夜間提醒：
+                                    <br>- 氣溫可能降至1-3℃
+                                    <br>- 河邊風大，建議多帶一件外套
+                                    <br>- 部分店家最後點餐時間21:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="day-card" id="day3">
+                    <h3>Day 3 - 東京迪士尼樂園（2024年12月聖誕特別版）</h3>
+                    <div class="timeline">
+                        <div class="time-block">
+                            <span class="time">07:30</span>
+                            <div class="activity activity-transport">
+                                <h4>飯店出發</h4>
+                                <p class="info-transport">路線：上野站 → JR京葉線 → 舞濱站</p>
+                                <ul>
+                                    <li>交通詳情：
+                                        <br>- 上野站 → 東京站（JR山手線，200日圓）
+                                        <br>- 東京站 → 舞濱站（JR京葉線，220日圓）
+                                        <br>- 總時間：約40分鐘</li>
+                                </ul>
+                                <p class="notice-warning">12月天氣提醒：
+                                    <br>- 早晨氣溫2-6℃
+                                    <br>- 建議穿著防風保暖外套
+                                    <br>- 準備暖暖包和保暖配件
+                                    <br>- 帶上防雨用具（降水機率40%）</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">08:30</span>
+                            <div class="activity activity-tips">
+                                <h4>入園準備</h4>
+                                <p class="notice-important">2024年最新入園規定：
+                                    <br>- 需提前在官網預約指定日期
+                                    <br>- 12月為旺季，建議提前2個月預約
+                                    <br>- 現場不接受當日購票</p>
+                                <ul>
+                                    <li>門票價格（2024年12月更新）：
+                                        <br>- 平日：8,900日圓
+                                        <br>- 假日：9,800日圓
+                                        <br>- 特別日（12/23-31）：10,800日圓
+                                        <br>- 13歲以下兒童優惠票價available</li>
+                                    <li>Disney Premier Access（新系統）：
+                                        <br>- 個別設施：2,500日圓/次
+                                        <br>- 全日套票：12,000日圓
+                                        <br>- 可通過官方APP購買</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">09:00-12:00</span>
+                            <div class="activity activity-sightseeing">
+                                <h4>上午遊園計劃</h4>
+                                <p class="notice-tips">2024冬季人氣設施排隊時間參考：</p>
+                                <ul>
+                                    <li>必玩設施優先順序：
+                                        <br>1. 美人魚礁湖劇場（室內，開園衝第一）
+                                        <br>2. 怪獸電力公司（需Premier Access）
+                                        <br>3. 加勒比海盜（室內，等待約45分鐘）</li>
+                                    <li>2024冬季限定活動：
+                                        <br>- 迪士尼冰雪奇緣慶典（9:30、11:00）
+                                        <br>- 冬季夢幻遊行（10:30）
+                                        <br>- 雪之國度特別表演（12:00）</li>
+                                    <li>室內休息點：
+                                        <br>- 明日世界展示廳
+                                        <br>- 世界市集商店
+                                        <br>- 探險樂園休息區</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">12:00-13:30</span>
+                            <div class="activity activity-food">
+                                <h4>午餐休息</h4>
+                                <p class="info-tips">推薦室內餐廳：</p>
+                                <ul>
+                                    <li>女王國度餐廳：
+                                        <br>- 位置：夢幻樂園
+                                        <br>- 特色：聖誕特別套餐
+                                        <br>- 價格：2,500日圓起
+                                        <br>- 建議提前預約</li>
+                                    <li>12月限定美食：
+                                        <br>- 聖誕特製甜點：800-1,200日圓
+                                        <br>- 節日主題餐點：1,500日圓起</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">14:00-16:30</span>
+                            <div class="activity activity-sightseeing">
+                                <h4>下午遊園計劃</h4>
+                                <ul>
+                                    <li>室內設施推薦：
+                                        <br>- 小小世界（聖誕特別版）
+                                        <br>- 白雪公主城堡探險
+                                        <br>- 星際旅行（需快速通行證）</li>
+                                    <li>聖誕特別動：
+                                        <br>- 聖誕老人見面會（需預約）
+                                        <br>- 城堡前合照（14:00-16:00最佳）</li>
+                                    <li>室內休息點：
+                                        <br>- 世界市集（可避寒）
+                                        <br>- 探險樂園劇場（定時表演）</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">16:30-20:00</span>
+                            <div class="activity activity-sightseeing">
+                                <h4>夜間特別活動</h4>
+                                <p class="info-tips">12月限定夜間活動：</p>
+                                <ul>
+                                    <li>16:45 聖誕夢之光花車遊行
+                                        <br>- 建議提前30分鐘占位
+                                        <br>- 推薦觀賞位置：世界市集前</li>
+                                    <li>18:00 城堡投影秀「雪之奇蹟」
+                                        <br>- 冬季限定版本
+                                        <br>- 約15分鐘</li>
+                                    <li>19:30 聖誕煙火秀
+                                        <br>- 結合音樂與燈光
+                                        <br>- 約15分鐘</li>
+                                </ul>
+                                <p class="notice-warning">夜間保暖提醒：氣溫可能降至3-5℃，建議添加保暖衣物</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">20:00-21:30</span>
+                            <div class="activity activity-transport">
+                                <h4>返回飯店</h4>
+                                <p class="info-transport">路線：舞濱站 → JR京葉線 → 上野站</p>
+                                <p class="info-time">交通時間：約30分鐘</p>
+                                <p class="info-cost">費用：390日圓</p>
+                                <p class="notice-tips">建議：可在舞濱站伊克斯皮兒莉購物中心享用晚餐，避開人潮</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="day-card" id="day4">
+                    <h3>Day 4 - 哈利波特影城（12月冬季限定版）</h3>
+                    <div class="timeline">
+                        <div class="time-block">
+                            <span class="time">07:30</span>
+                            <div class="activity activity-transport">
+                                <h4>飯店出發</h4>
+                                <p class="info-transport">路線：上野站 → JR埼京線 → 池袋站 → 東武東上線 → 富士見台站</p>
+                                <ul>
+                                    <li>詳細交通：
+                                        <br>- 上野站 → 池袋站（JR山手線，170日圓，10分鐘）
+                                        <br>- 池袋站 → 富士見台站（東武東上線，270日圓，20分鐘）
+                                        <br>- 富士見台站 → 影城（免費接駁巴士，15分鐘）</li>
+                                    <li>總交通費用：約440日圓（單程）</li>
+                                </ul>
+                                <p class="notice-warning">12月天氣提醒：
+                                    <br>- 早晨氣溫約3-7℃
+                                    <br>- 建議穿著保暖防風外套
+                                    <br>- 準備暖暖包和圍巾手套</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">09:00</span>
+                            <div class="activity activity-tips">
+                                <h4>入園準備</h4>
+                                <p class="info-cost">門票資訊：</p>
+                                <ul>
+                                    <li>一般門票：
+                                        <br>- 日：6,300日圓
+                                        <br>- 假日：6,900日圓
+                                        <br>- 12月特別日：7,400日圓（12/23-31）</li>
+                                    <li>快速通行證：
+                                        <br>- 標準版：4,000日圓（2次快速通行）
+                                        <br>- 豪華版：5,000日圓（4次快速通行）</li>
+                                </ul>
+                                <p class="notice-important">12月特別提醒：聖誕節期間需提前1個月預約，現場可能無票</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">09:30-12:00</span>
+                            <div class="activity activity-sightseeing">
+                                <h4>上午遊園計劃</h4>
+                                <p class="info-tips">建議遊玩順序：</p>
+                                <ul>
+                                    <li>必玩設施（建議使用快速通行證）：
+                                        <br>- 霍格華茲城堡4D冒險
+                                        <br>- 禁忌之旅（等待時間約90-120分鐘）
+                                        <br>- 鷹馬飛行（等待時間約60分鐘）</li>
+                                    <li>12月限定活動：
+                                        <br>- 魔法世界聖誕裝飾拍照
+                                        <br>- 冬季限定魔法表演（10:00、11:30）
+                                        <br>- 霍格華茲城堡水晶燈飾</li>
+                                </ul>
+                                <p class="notice-tips">保暖建議：城堡內有暖氣，室外建議添加保暖層</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">19:00-20:30</span>
+                            <div class="activity activity-food">
+                                <h4>晚餐時間</h4>
+                                <p class="info-tips">池袋站晚餐推薦：</p>
+                                <ul>
+                                    <li>無敵家拉麵本店：
+                                        <br>- 位置：池袋站東口3分鐘
+                                        <br>- 冬季限定拉麵：1,380日圓
+                                        <br>- 營業至23:00</li>
+                                    <li>池袋西武百貨美食街：
+                                        <br>- 位置：池袋站直連
+                                        <br>- 多家餐廳可選
+                                        <br>- 最後點餐21:00
+                                        <br>- 預算：1,500-3,000日圓</li>
+                                </ul>
+                                <p class="notice-tips">建議在池袋站用餐，選擇較多且有室內通道</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">13:30-16:30</span>
+                            <div class="activity activity-shopping">
+                                <h4>下午活動</h4>
+                                <ul>
+                                    <li>魔法體驗：
+                                        <br>- 魔杖選擇儀式（要預約）
+                                        <br>- 互動魔法施展（園區內15個地點）
+                                        <br>- 魔藥調配體驗（1,500日圓）</li>
+                                    <li>12月限定商品：
+                                        <br>- 聖誕限定魔杖（8,500日圓）
+                                        <br>- 冬季校服圍巾（4,500日圓）
+                                        <br>- 節日限定糖果（1,200日圓起）</li>
+                                    <li>必逛商店：
+                                        <br>- 奧利凡德魔杖店
+                                        <br>- 蜂蜜公爵糖果店
+                                        <br>- 佐科笑話商店</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">16:30-19:00</span>
+                            <div class="activity activity-sightseeing">
+                                <h4>夜間特別活動</h4>
+                                <p class="info-tips">冬季限定活動</p>
+                                <ul>
+                                    <li>16:45 魔法世界燈光秀
+                                        <br>- 霍格華茲城堡投影
+                                        <br>- 約15分鐘，建議提前占位</li>
+                                    <li>17:30 聖誕魔法遊行
+                                        <br>- 活米村主街
+                                        <br>- 約30分鐘</li>
+                                    <li>18:00 夜間魔法表演
+                                        <br>- 活米村中心廣場
+                                        <br>- 冬季特別版本</li>
+                                </ul>
+                                <p class="notice-warning">夜間氣溫可能降至2-3℃，建議準備保暖衣物</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">19:30-21:00</span>
+                            <div class="activity activity-transport">
+                                <h4>返回飯店</h4>
+                                <p class="info-transport">返程路線：富士見台站 → 池袋站 → 上野站</p>
+                                <ul>
+                                    <li>交通詳情：
+                                        <br>- 接駁巴士末班：19:45
+                                        <br>- 富士見台站末班車：22:30
+                                        <br>- 總費用：440日圓</li>
+                                    <li>池袋站晚餐推薦：
+                                        <br>- 無敵家拉麵本店（營業至23:00）
+                                        <br>- 特製拉麵：1,200日圓
+                                        <br>- 位置：池袋站東口3分鐘</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="day-card" id="day5">
+                    <h3>Day 5 - 新宿・六本木（2024年12月聖誕版）</h3>
+                    <div class="timeline">
+                        <div class="time-block">
+                            <span class="time">09:30</span>
+                            <div class="activity activity-transport">
+                                <h4>飯店出發</h4>
+                                <p class="info-transport">路線：上野廣小路站 → 銀座線 → 新宿三丁目站</p>
+                                <ul>
+                                    <li>交通詳情：
+                                        <br>- 交通時間：約25分鐘
+                                        <br>- 費用：180日圓（2024年新票價）</li>
+                                </ul>
+                                <p class="notice-warning">12月天氣提醒：早晨氣溫2-6℃，建議穿著保暖外套</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">10:00-12:30</span>
+                            <div class="activity activity-sightseeing">
+                                <h4>新宿御苑・銀杏並木</h4>
+                                <p class="info-cost">門票：500日圓（可使用信用卡）</p>
+                                <ul>
+                                    <li>冬季景點推薦：
+                                        <br>- 日本庭園（楓葉最後觀賞期）
+                                        <br>- 溫室花園（避寒好去處）
+                                        <br>- 台灣閣（室內休息區）</li>
+                                    <li>2024冬季特別展：
+                                        <br>- 新宿御苑菊花展（限定展出）
+                                        <br>- 冬季花卉攝影展
+                                        <br>- 室內展覽廳（有暖氣）</li>
+                                    <li>早餐推薦：
+                                        <br>- 新宿站DEAN & DELUCA
+                                        <br>- 冬季限定熱飲套餐：1,200日圓
+                                        <br>- 營業時間：7:30-22:00</li>
+                                </ul>
+                                <p class="notice-tips">最佳攝影時間：10:00-11:00，陽光最適合</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">13:00-16:00</span>
+                            <div class="activity activity-shopping">
+                                <h4>新宿購物</h4>
+                                <ul>
+                                    <li>新宿高島屋 Times Square：
+                                        <br>- 12月限定聖誕市集（B1F）
+                                        <br>- 冬季特賣活動
+                                        <br>- 2024新年福袋預約
+                                        <br>- 營業至20:00</li>
+                                    <li>LUMINE EST：
+                                        <br>- 聖誕限定商品區
+                                        <br>- 美食街（14F）
+                                        <br>- 營業至21:30
+                                        <br>- 使用信用卡滿10,000日圓享95折</li>
+                                    <li>午餐推薦：
+                                        <br>- 新宿站立食蕎麥麵（800日圓）
+                                        <br>- LUMINE美食街（1,500日圓起）
+                                        <br>- 冬季限定火鍋套餐（2,200日圓）</li>
+                                </ul>
+                                <p class="notice-tips">週末人潮較多，建議先在官網查詢各店鋪營業時間</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">15:30-19:00</span>
+                            <div class="activity activity-sightseeing">
+                                <h4>六本木之丘・聖誕點燈</h4>
+                                <p class="info-transport">交通：新宿站 → 大江戶線 → 六本木站（170日圓）</p>
+                                <ul>
+                                    <li>六本木之丘：
+                                        <br>- 森美術館（1,800日圓）
+                                        <br>- 展望台Tokyo City View（2,000日圓）
+                                        <br>- 最後入場：19:30</li>
+                                    <li>12月限定活動：
+                                        <br>- 六本木之丘聖誕市集（16:00-22:00）
+                                        <br>- 聖誕燈飾（16:30點燈）
+                                        <br>- 冬季特別展（需另購票）</li>
+                                    <li>晚餐推薦：
+                                        <br>- 六本木橫丁居酒屋
+                                        <br>- 冬季限定火鍋套餐：3,500日圓/人
+                                        <br>- 建議預約</li>
+                                </ul>
+                                <p class="notice-tips">展望台建議在日落前後參觀，可同時欣賞日景和夜景</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">19:30-21:00</span>
+                            <div class="activity activity-transport">
+                                <h4>返回飯店</h4>
+                                <p class="info-transport">路線：六本木站 → 日比谷 → 上野站</p>
+                                <ul>
+                                    <li>交通詳情：
+                                        <br>- 交通時間：約25分鐘
+                                        <br>- 費用：170日圓
+                                        <br>- 末班車時間請注意查詢</li>
+                                </ul>
+                                <p class="notice-warning">夜間氣溫可能降至2-3℃，注意保暖</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="day-card" id="day6">
+                    <h3>Day 6 - 秋葉原・銀座（12月聖誕購物版）</h3>
+                    <div class="timeline">
+                        <div class="time-block">
+                            <span class="time">09:30</span>
+                            <div class="activity activity-transport">
+                                <h4>飯店出發</h4>
+                                <p class="info-tips">12月天氣：早晨氣溫3-7℃，建議穿著保暖衣物</p>
+                                <p class="info-transport">路線：步行至秋葉原電器街（約10分鐘）</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">10:00-14:00</span>
+                            <div class="activity activity-shopping">
+                                <h4>秋葉原購物</h4>
+                                <ul>
+                                    <li>電器城推薦（2024冬季優惠）：
+                                        <br>- Yodobashi Camera：最高8%+7%折扣
+                                        <br>- BicCamera：海外信用卡額外5%折扣
+                                        <br>- 免稅+信用卡可享最高20%折扣</li>
+                                    <li>動漫商品��
+                                        <br>- SEGA秋葉原3號館（冬季限定商品）
+                                        <br>- Animate（聖誕特典活動）
+                                        <br>- 2024冬季限定商品區</li>
+                                    <li>午餐推薦：
+                                        <br>- 肉の萬世本店（冬季限定壽喜燒）
+                                        <br>- 預算：2,000-3,000日圓
+                                        <br>- 建議預約，特別受歡迎</li>
+                                </ul>
+                                <p class="notice-tips">購物建議：大型電器可申請免稅+配送服務到機場</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">14:30-19:00</span>
+                            <div class="activity activity-sightseeing">
+                                <h4>銀座聖誕點燈</h4>
+                                <p class="info-transport">路線：秋葉原站 → 銀座線 → 銀座站（170日圓）</p>
+                                <ul>
+                                    <li>銀座必逛：
+                                        <br>- GINZA SIX（聖誕特別裝飾）
+                                        <br>- 三越百貨（冬季特賣）
+                                        <br>- Apple Store（限定商品）</li>
+                                    <li>12月限定活動：
+                                        <br>- 銀座聖誕燈飾（16:00開始）
+                                        <br>- 和光百貨投影秀（17:00-22:00）
+                                        <br>- 各百貨聖誕市集</li>
+                                    <li>晚餐推薦：
+                                        <br>- 銀座篝拉麵本店
+                                        <br>- 冬季限定濃厚雞白湯：1,500日圓
+                                        <br>- 營業至22:00，可能需排隊</li>
+                                </ul>
+                                <p class="notice-warning">銀座週末人潮較多，建議提前規劃路線</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">19:30-21:00</span>
+                            <div class="activity activity-transport">
+                                <h4>返回飯店</h4>
+                                <p class="info-transport">路線銀座站 → 銀座線 → 上野廣小路站</p>
+                                <ul>
+                                    <li>交通詳情：
+                                        <br>- 交通時間：約15分鐘
+                                        <br>- 費用：170日圓
+                                        <br>- 末班車時間：約24:00</li>
+                                </ul>
+                                <p class="notice-warning">夜間氣溫可能降至2-3℃，注意保暖</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="day-card" id="day7">
+                    <h3>Day 7 - 池袋・成田機場（2024年12月返程版）</h3>
+                    <div class="timeline">
+                        <div class="time-block">
+                            <span class="time">09:00</span>
+                            <div class="activity activity-transport">
+                                <h4>退房準備</h4>
+                                <ul>
+                                    <li>退房事項：
+                                        <br>- 檢查房間遺留物品
+                                        <br>- 歸還房卡
+                                        <br>- 行李寄存（免費至晚上）</li>
+                                    <li>攜帶物品確認：
+                                        <br>- 護照和機票
+                                        <br>- 購物單據（退稅用）
+                                        <br>- 剩餘現金兌換</li>
+                                </ul>
+                                <p class="notice-warning">12月天氣提醒：早晨氣溫2-6℃，建議穿著保暖衣物</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">10:00-14:00</span>
+                            <div class="activity activity-shopping">
+                                <h4>池袋最後購物</h4>
+                                <p class="info-transport">路線：上野站 → JR山手線 → 池袋站（170日圓）</p>
+                                <ul>
+                                    <li>Sunshine City（2024冬季特賣）：
+                                        <br>- 化妝品買3送1優惠
+                                        <br>- 冬季服飾最高70%折扣
+                                        <br>- 美食街午餐套餐特價</li>
+                                    <li>退稅手續（2024更新）：
+                                        <br>- 同一百貨消費滿5,000日圓可退稅
+                                        <br>- 需出示護照原件
+                                        <br>- 部分商店支援電子退稅</li>
+                                    <li>午餐推薦：
+                                        <br>- 太陽城美食街冬季限定套餐
+                                        <br>- 預算：1,200-1,800日圓
+                                        <br>- 推薦：冬季限定火鍋（1,580日圓）</li>
+                                </ul>
+                                <p class="notice-tips">部分商店提供行李寄送服務到機場（最晚收件時間15:00）</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">14:30-16:00</span>
+                            <div class="activity activity-transport">
+                                <h4>返回飯店領取行李</h4>
+                                <p class="info-transport">路線：池袋站 → JR山手線 → 上野站（170日圓）</p>
+                                <ul>
+                                    <li>行李整理：
+                                        <br>- 確認行李重量限制
+                                        <br>- 易碎品妥善包裝
+                                        <br>- 液體類放置隨身包</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">16:30</span>
+                            <div class="activity activity-transport">
+                                <h4>前往成田機場</h4>
+                                <p class="info-transport">交通選擇（2024最新）：</p>
+                                <ul>
+                                    <li>方案1（推薦）：京成Skyliner
+                                        <br>- 上野站 → 成田機場
+                                        <br>- 時間：41分鐘
+                                        <br>- 費用：2,570日圓
+                                        <br>- 班次：每20分鐘一班
+                                        <br>- 準點率：99.9%</li>
+                                    <li>方案2：JR NEX成田特快
+                                        <br>- 上野站 → 成田機場
+                                        <br>- 時間：55分鐘
+                                        <br>- 費用：3,200日圓
+                                        <br>- 班次：每30分鐘一班</li>
+                                </ul>
+                                <p class="notice-warning">12月特別提醒：
+                                    <br>- 考慮天氣因素，建議預留充足時間
+                                    <br>- 部分航班可能因天氣延誤</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">18:00-19:00</span>
+                            <div class="activity activity-tips">
+                                <h4>機場手續</h4>
+                                <ul>
+                                    <li>辦理順序：
+                                        <br>1. 托運行李（提前2小時）
+                                        <br>2. 退稅手續（出境大廳）
+                                        <br>3. 安檢通關
+                                        <br>4. 護照查驗</li>
+                                    <li>機場退稅（2024新規定）：
+                                        <br>- 單店消費滿5,000日圓
+                                        <br>- 需出示購物原始單據
+                                        <br>- 部分商品需實物查驗</li>
+                                    <li>最後購物：
+                                        <br>- 成田機場免稅店
+                                        <br>- 12月限定伴手禮
+                                        <br>- 日本限定商品</li>
+                                </ul>
+                                <p class="notice-important">建議19:00前完成所有手續</p>
+                            </div>
+                        </div>
+
+                        <div class="time-block">
+                            <span class="time">21:00</span>
+                            <div class="activity activity-transport">
+                                <h4>航班起飛</h4>
+                                <ul>
+                                    <li>最後確認：
+                                        <br>- 登機門位置和時間
+                                        <br>- 隨身行李規定
+                                        <br>- 護照和登機證</li>
+                                </ul>
+                                <p class="notice-important">建議提前30分鐘到達登機門</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer class="copyright">
+        <p>由D7創作，如有相同屬為巧合！！！</p>
+    </footer>
+</body>
+</html> 
