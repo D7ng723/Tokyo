@@ -1244,3 +1244,16 @@ main {
         font-size: 0.9rem;
     }
 } 
+
+#scrollToTop {
+    background-color: #1e40af; /* 按鈕背景色 */
+    color: white; /* 按鈕文字顏色 */
+    border: none; /* 無邊框 */
+    border-radius: 5px; /* 圓角 */
+    cursor: pointer; /* 鼠標懸停變為手型 */
+    transition: background-color 0.3s; /* 背景色變化過渡 */
+}
+
+#scrollToTop:hover {
+    background-color: #0d3a8e; /* 懸停時的背景色 */
+} 

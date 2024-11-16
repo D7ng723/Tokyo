@@ -13,12 +13,35 @@
         /* 添加背景圖片和下雪特效 */
         .page-header {
             position: relative;
-            background-image: url('https://example.com/tokyo_nature.jpg'); /* 替換為您的高清圖片URL */
+            padding: 3rem 5%;
+            text-align: center;
+            color: white;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
             background-size: cover;
             background-position: center;
-            color: white;
-            padding: 2rem;
-            text-align: center;
+            background-repeat: no-repeat;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(37, 99, 235, 0.6);
+            z-index: 1;
+        }
+
+        .page-header h1,
+        .page-header p {
+            position: relative;
+            z-index: 2;
         }
 
         /* 雪花特效 */
@@ -51,9 +74,94 @@
                 opacity: 0;
             }
         }
+
+        /* 修改 quick-nav 的背景色 */
+        .quick-nav {
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            background: #ABCDEF; /* 改為新的背景色 */
+            color: black; /* 文字顏色改為黑色以提高可讀性 */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .day-selector select {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background-color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .day-selector select:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .quick-nav {
+                padding: 0.8rem;
+            }
+            
+            .day-selector select {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+
+        /* 調整返回頂部按鈕 */
+        #scrollToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 75%; /* 靠頁面右邊的75% */
+            transform: translateX(-50%); /* 調整為中心 */
+            width: 40px; /* 設置寬度 */
+            height: 40px; /* 設置高度 */
+            background-color: #336699; /* 改為新的背景色 */
+            color: white;
+            border: none;
+            border-radius: 50%; /* 改為圓形 */
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px; /* 調整字體大小 */
+        }
+
+        #scrollToTop:before {
+            content: '↑'; /* 使用向上符號 */
+            font-size: 20px; /* 調整符號大小 */
+        }
     </style>
 </head>
-<body>
+<body style="background-color: #f5f5f5;"> <!-- 設置淺灰色背景 -->
     <div class="page-header">
         <h1>D&K東京8日7夜完美遊行程</h1>
         <p class="sub-title">2024年12月7-14日版 | 住宿：秋葉原APA Hotel Uenohirokoji</p>
@@ -81,41 +189,25 @@
     </script>
 
     <div class="quick-nav">
-        <div class="nav-item">
-            <i class="icon">ℹ️</i>
-            <a href="#notice">行前須知</a>
-        </div>
-        <div class="nav-item">
-            <i class="icon">✈️</i>
-            <a href="#day1">Day 1</a>
-        </div>
-        <div class="nav-item">
-            <i class="icon">🗼</i>
-            <a href="#day2">Day 2</a>
-        </div>
-        <div class="nav-item">
-            <i class="icon">🎢</i>
-            <a href="#day3">Day 3</a>
-        </div>
-        <div class="nav-item">
-            <i class="icon">🍡</i>
-            <a href="#day4">Day 4</a>
-        </div>
-        <div class="nav-item">
-            <i class="icon">🛍️</i>
-            <a href="#day5">Day 5</a>
-        </div>
-        <div class="nav-item">
-            <i class="icon">⚡</i>
-            <a href="#day6">Day 6</a>
-        </div>
-        <div class="nav-item">
-            <i class="icon">🌆</i>
-            <a href="#day7">Day 7</a>
-        </div>
-        <div class="nav-item">
-            <i class="icon">🛫</i>
-            <a href="#day8">Day 8</a>
+        <div class="nav-container">
+            <div class="nav-item">
+                <i class="icon">ℹ️</i>
+                <a href="#notice">行前須知</a>
+            </div>
+            <div class="nav-item day-selector">
+                <i class="icon">📅</i>
+                <select id="daySelect" onchange="scrollToDay(this.value)">
+                    <option value="">選擇行程</option>
+                    <option value="day1">Day 1 - 成田機場・秋葉原</option>
+                    <option value="day2">Day 2 - 淺草寺・晴空</option>
+                    <option value="day3">Day 3 - 東京迪士尼樂園</option>
+                    <option value="day4">Day 4 - 明治神宮・原宿・涉谷</option>
+                    <option value="day5">Day 5 - 哈利波特影城</option>
+                    <option value="day6">Day 6 - 新宿御苑・銀杏並木</option>
+                    <option value="day7">Day 7 - 台場・六本木</option>
+                    <option value="day8">Day 8 - 吉祥寺・成田機場</option>
+                </select>
+            </div>
         </div>
     </div>
 
@@ -132,11 +224,11 @@
                             <br>- 申請網址：https://vjw-lp.digital.go.jp/en/
                             <br>- 審核時間：3-5個工作日（正確）
                             <br>- 需上傳3個月內證件照</li>
-                        <li>Visit Japan Web登錄：
+                        <li>Visit Japan Web：
                             <br>- 出發前7天完成（修正）
                             <br>- 包含入境、海關申報
                             <br>- 可預先上傳疫苗證明</li>
-                        <li>消費稅政策：
+                        <li>消稅政策：
                             <br>- 一般商品：10%
                             <br>- 外帶食品：8%
                             <br>- 免稅條件：5,000日圓以上</li>
@@ -236,7 +328,7 @@
             <h2>每日行程</h2>
             <div class="day-cards">
                 <article class="day-card" id="day1">
-                    <h3>Day 1 - 成田機場・秋葉原（2024年12月7日）</h3>
+                    <h3>Day 1 - 田機場・秋葉原（2024年12月7日）</h3>
                     <div class="timeline">
                         <div class="time-block">
                             <span class="time">18:00</span>
@@ -262,7 +354,7 @@
                                         <br>- 支援PayPay/信用卡/Apple Pay</li>
                                     <li>交通票券（更新）：
                                         <br>- Pasmo IC卡：預付3,500日圓（含500日圓押金）
-                                        <br>- 72小時地鐵券：1,800日圓（2024新格）
+                                        <br>- 72小時地鐵券：1,800日圓（2024新格式）
                                         <br>- Welcome Suica：2,500日圓（新推出）</li>
                                 </ul>
                                 <p class="notice-tips">新增：機場7-11暖暖包買二送一（限量）</p>
@@ -279,7 +371,7 @@
                                 <ul>
                                     <li>方案1（推薦）：京成Skyliner
                                         <br>- 路線：成田機場第2航廈 → 日暮里站 → 上野站
-                                        <br>- 時間：41分鐘（準點率99.9%）
+                                        <br>- 時間：41分鐘（準率99.9%）
                                         <br>- 費用：2,570日圓
                                         <br>- 班次：每15分鐘一班（末班車23:30）
                                         <br>- 優惠：官網預約可享2,300日圓特價</li>
@@ -306,7 +398,7 @@
                                 <p class="info-location">路線：飯店 → 秋葉原電器街（室內通道10分鐘）</p>
                                 <p class="notice-important">2024冬季限定活動：
                                     <br>- 秋葉原聖誕燈飾17:00-23:00
-                                    <br>- 電器街光雕投影秀（每20分鐘一場）
+                                    <br>- 電器街光雕影秀（每20分鐘一場）
                                     <br>- UDX廣場聖誕市集（至23:30）</p>
                                 <ul>
                                     <li>必訪景點（2024冬季營業時間）
@@ -349,7 +441,7 @@
                                     <li>淺草寺參拜路線：
                                         <br>- 雷門 → 仲見世通り → 寶藏門
                                         <br>- 本堂參拜（免費）
-                                        <br>- 五重塔拍照點（最佳攝影時間9:00-10:00）</li>
+                                        <br>- 五重塔拍照點（佳攝影時間9:00-10:00）</li>
                                     <li>仲見世通商店街：
                                         <br>- 推薦店鋪：舟和本店（人形燒，8個900日圓）
                                         <br>- 淺草寧々福（天婦羅定食2,200日圓）
@@ -360,7 +452,10 @@
                                         <br>- 冬季光雕投影（16:00-22:00）
                                         <br>- 新增室內休息區（免費WiFi）</li>
                                 </ul>
-                                <p class="notice-warning">12月天氣提醒：早晨氣溫2-7℃，建議穿著保暖衣物</p>
+                                <p class="notice-warning">12月天氣提醒：
+                                    <br>- 早晨氣溫約3-7℃
+                                    <br>- 建議穿著保暖防風外套
+                                    <br>- 準備暖暖包和圍巾手套</p>
                             </div>
                         </div>
 
@@ -418,7 +513,7 @@
                                 </ul>
                                 <p class="notice-warning">12月夜間提醒：
                                     <br>- 氣溫可能降至1-3℃
-                                    <br>- 河邊風大，建議多帶一件外套
+                                    <br>- 河邊大，建議多帶一件外套
                                     <br>- 部分店家最後點餐時間21:00</p>
                             </div>
                         </div>
@@ -437,7 +532,7 @@
                                 <p class="info-transport">路線：上野站 → JR京葉線 → 舞濱站</p>
                                 <ul>
                                     <li>交通詳情：
-                                        <br>- 上野站 → 東京站JR山手線，200日圓
+                                        <br>- 上野 → 東京站JR山手線，200日圓
                                         <br>- 東京站 → 舞濱站（JR京葉線，220日圓）
                                         <br>- 總時間：約40分鐘</li>
                                 </ul>
@@ -482,7 +577,7 @@
                                     <li>必玩設施優先順序：
                                         <br>1. 美人魚礁湖劇場（室內，開園衝第一）
                                         <br>2. 怪獸電力公司（需Premier Access）
-                                        <br>3. 加勒比海盜（室內，等待��45分鐘）</li>
+                                        <br>3. 加勒比海盜（室內，等待45分鐘）</li>
                                     <li>2024冬季限定活動：
                                         <br>- Disney Christmas Stories（11/7-12/25）
                                         <br>- 特別夜間表演「Believe! Christmas Dreams」
@@ -502,7 +597,7 @@
                                 <h4>午餐休息</h4>
                                 <p class="info-tips">推薦室內餐廳：</p>
                                 <ul>
-                                    <li>女王國度餐廳：
+                                    <li>女國度餐廳：
                                         <br>- 位置：夢幻樂園
                                         <br>- 特色：聖誕特別套餐
                                         <br>- 價格2,500日圓起
@@ -557,7 +652,7 @@
                                 <p class="info-transport">路線：舞濱站 → JR京葉線 → 上野站</p>
                                 <p class="info-time">交通時間：約30分鐘</p>
                                 <p class="info-cost">費用：390日圓</p>
-                                <p class="notice-tips">建議：可在舞濱站伊克斯皮兒莉購物中心享用晚餐，避開人潮</p>
+                                <p class="notice-tips">建議：可在舞濱站伊克斯兒莉購物中心享用晚餐，避開人潮</p>
                             </div>
                         </div>
                     </div>
@@ -597,7 +692,7 @@
                                 <h4>明治神宮參拜 
                                     <a href="https://www.meijijingu.or.jp/zh/" target="_blank">(官網連結)</a>
                                 </h4>
-                                <p class="info-tips">2024年冬季特別活動</p>
+                                <p class="info-tips">2024年冬季別活動</p>
                                 <ul>
                                     <li>參拜路線（最新推薦）：
                                         <br>- 原宿站 → 南參道入口（步行5分鐘）
@@ -612,7 +707,7 @@
                                     <li>室內休息點（新設施）：
                                         <br>- 明治紀念館休息室（有暖氣）
                                         <br>- 文化館（可避寒）
-                                        <br>- 新設手機充電站（免費）
+                                        <br>- 新手機充電站（免費）
                                         <br>- 寺務所（有中文服務）</li>
                                     <li>冬季限定商品：
                                         <br>- 招福御守（限量）：1,500日圓
@@ -713,7 +808,7 @@
                             <span class="time">19:30-21:00</span>
                             <div class="activity activity-transport">
                                 <h4>返回飯店</h4>
-                                <p class="info-transport">路線：涉谷站 → JR山手線 → 上野站</p>
+                                <p class="info-transport">路線涉谷站 → JR山手線 → 上野站</p>
                                 <ul>
                                     <li>交通詳情（2024更新）：
                                         <br>- 所需時間：30分鐘
@@ -726,7 +821,7 @@
                                         <br>- 末班車：23:45</li>
                                 </ul>
                                 <p class="notice-warning">夜間注意事項：
-                                    <br>- 氣溫可能降至1-3℃
+                                    <br>- 氣溫可能降至1-3
                                     <br>- 部分車站出口夜間閉
                                     <br>- 建議使用車站內通道
                                     <br>- 可使用導航APP查詢即時班次</p>
@@ -752,7 +847,7 @@
                                         <br>- 富士見台站 → 影城（免費接駁巴士，15分鐘）</li>
                                     <li>總交通費用：約440日圓（單程）</li>
                                 </ul>
-                                <p class="notice-warning">12月天氣提醒：
+                                <p class="notice-warning">12月氣提醒：
                                     <br>- 早晨氣溫約3-7℃
                                     <br>- 建議穿著保暖防風外套
                                     <br>- 準備暖暖包和圍巾手套</p>
@@ -794,7 +889,7 @@
                                         <br>- 冬季限定魔法表演（10:00、11:30）
                                         <br>- 霍格華茲城堡水晶燈飾</li>
                                 </ul>
-                                <p class="notice-tips">保暖建議：城堡內有暖氣，室外建議添加保暖層</p>
+                                <p class="notice-tips">保暖建議：城堡內暖氣，室外建議添加保暖層</p>
                             </div>
                         </div>
 
@@ -814,7 +909,7 @@
                                         <br>- 最後點餐21:00
                                         <br>- 預算：1,500-3,000日圓</li>
                                 </ul>
-                                <p class="notice-tips">建議在池袋站用餐，選擇較多且有室內通道</p>
+                                <p class="notice-tips">建議池袋站用餐，選擇較多且有室內通道</p>
                             </div>
                         </div>
 
@@ -834,7 +929,7 @@
                                     <li>必逛商店：
                                         <br>- 奧利凡德魔杖
                                         <br>- 蜂蜜公爵糖果
-                                        <br>- 佐科笑話商店</li>
+                                        <br>- 佐科笑話商</li>
                                 </ul>
                             </div>
                         </div>
@@ -891,7 +986,7 @@
                                 <p class="info-cost">門票：500日圓（可使用信用卡）</p>
                                 <ul>
                                     <li>2024冬季特別展：
-                                        <br>- 新���御苑菊花展（限定展出）
+                                        <br>- 新御苑菊花展（限定展出）
                                         <br>- 冬季花卉攝影展
                                         <br>- 室內溫室花園（避寒好去處）
                                         <br>- 台灣閣（室內休息區）</li>
@@ -945,7 +1040,7 @@
                         <div class="time-block">
                             <span class="time">16:30-19:00</span>
                             <div class="activity activity-sightseeing">
-                                <h4>銀座夜景・聖誕點燈</h4>
+                                <h4>銀座夜・聖誕點燈</h4>
                                 <ul>
                                     <li>2024冬季限定活動：
                                         <br>- 銀座光之散步（16:00-23:00）
@@ -990,7 +1085,7 @@
                                 <h4>台場冬季特別活動 
                                     <a href="https://www.tokyo-odaiba.net/zh-tw/" target="_blank">(官網連結)</a>
                                 </h4>
-                                <p class="info-transport">路線：上野站 → 有樂町線 → 豐洲 → 百合鷗線 → 台場（480日圓）</p>
+                                <p class="info-transport">路線：上野站 → 有樂町線 → 豐洲 → 百合鷗線 → 台（480日圓）</p>
                                 <ul>
                                     <li>DiverCity Tokyo Plaza（2024冬季）：
                                         <br>- 獨角獸鋼彈冬季特效表演（新節目）
@@ -1006,18 +1101,17 @@
                                         <br>  新增室內遊樂設施
                                         <br>  ・觀景餐廳（13F）
                                         <br>- 台場摩天輪（翻新）
-                                        <br>  ・門票：1,200日圓
-                                        <br>  ・特別夜景時段：16:00-22:00</li>
+                                        <br>  ・門票：1,200日圓</li>
                                     <li>午餐推薦（2024新店）：
                                         <br>- AQUA CITY 5F 美食街
                                         <br>  海鮮料理 築地魚河岸
-                                        <br>  ・冬��限定蟹料理套餐：3,800日圓
+                                        <br>  ・冬限定蟹料理套餐：3,800日圓
                                         <br>  ・需LINE預約</li>
                                 </ul>
                                 <p class="notice-tips">購物優惠：
                                     <br>- DiverCity會員卡可享額外8%折扣
                                     <br>- 刷JCB卡享95折
-                                    <br>- 部分商店支援支付寶/微信支</p>
+                                    <br>- 部分商店支援支寶/微信支</p>
                             </div>
                         </div>
 
@@ -1135,7 +1229,7 @@
                                         <br>- 上野站 → 成田機場
                                         <br>- 時間：55分鐘
                                         <br>- 費用：3,200日圓（訪日遊客優惠2,900日圓）
-                                        <br>- ��次：每30分鐘一班</li>
+                                        <br>- 次：每30分鐘一班</li>
                                 </ul>
                                 <p class="notice-warning">12月特別提醒：
                                     <br>- 考慮天氣因素，建議預留充足時間
@@ -1185,7 +1279,91 @@
         </section>
     </main>
     <footer class="copyright">
-        <p>由D7創作，如有相同屬為巧合！！！</p>
+        <p>由D7創作，如有相同屬為巧合！！</p>
     </footer>
+
+    <!-- 在 </body> 標籤前添加以下腳本 -->
+    <script>
+    // 修改滾動功能
+    function scrollToDay(dayId) {
+        if (dayId) {
+            const element = document.getElementById(dayId);
+            if (element) {
+                const navHeight = document.querySelector('.quick-nav').offsetHeight;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navHeight - 20; // 額外增加20px的間距
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }
+
+    // 初始化下拉選單事件監聽
+    document.addEventListener('DOMContentLoaded', function() {
+        const daySelect = document.getElementById('daySelect');
+        if (daySelect) {
+            daySelect.addEventListener('change', function() {
+                scrollToDay(this.value);
+            });
+        }
+    });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const backgrounds = [
+            'https://images.unsplash.com/photo-1490806843957-31f4c9a91c65', // 富士山
+            'https://images.unsplash.com/photo-1542051841857-5f90071e7989', // 新宿御苑
+            'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d', // 上野公園櫻花
+            'https://images.unsplash.com/photo-1536098561742-ca998e48cbcc', // 明治神宮
+            'https://images.unsplash.com/photo-1617339860293-8c1c4b9b2f76'  // 淺草寺
+        ];
+        
+        let currentIndex = 0;
+        const header = document.querySelector('.page-header');
+        
+        // 設置初始背景
+        header.style.backgroundImage = `url('${backgrounds[0]}')`;
+        
+        // 每60秒切換一次背景
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % backgrounds.length;
+            header.style.opacity = 0;
+            
+            setTimeout(() => {
+                header.style.backgroundImage = `url('${backgrounds[currentIndex]}')`;
+                header.style.opacity = 1;
+            }, 500);
+        }, 60000);
+    });
+    </script>
+
+    <!-- 返回頂部按鈕 -->
+    <button id="scrollToTop"></button>
+
+    <script>
+        // 返回頂部按鈕功能
+        const scrollToTopButton = document.getElementById('scrollToTop');
+
+        // 當滾動到一定距離時顯示按鈕
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopButton.style.display = "flex"; // 顯示按鈕
+            } else {
+                scrollToTopButton.style.display = "none"; // 隱藏按鈕
+            }
+        };
+
+        // 點擊按鈕時平滑滾動到頂部
+        scrollToTopButton.onclick = function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        };
+    </script>
 </body>
 </html> 
