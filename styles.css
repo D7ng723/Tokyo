@@ -637,15 +637,15 @@ h4 {
 
 /* 修改行前準備區塊的樣式 */
 .notice-section {
-    margin-top: 0.8rem;
-    padding-top: 0.3rem;
+    margin-top: 0.1rem;
+    padding-top: 0.1rem;
 }
 
 .info-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.8rem;
-    margin: 0 auto;
+    gap: 0.5rem;
+    margin: -0.2rem auto 0;
     max-width: var(--container-width);
     padding: 0 1rem;
 }
@@ -1222,7 +1222,7 @@ main {
     }
 } 
 
-/* 添加提��樣式 */
+/* 添加提樣式 */
 .notice-important {
     background: #fff3e0;
     border-left: 4px solid #ff9800;
