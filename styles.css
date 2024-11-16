@@ -16,10 +16,10 @@
     --tablet-padding: 2rem;
     --desktop-padding: 3rem;
     --section-background: #ffffff;
-    --font-size-xl: clamp(1.8rem, 4vw, 2.5rem);    /* 大標題 */
-    --font-size-lg: clamp(1.2rem, 3vw, 1.6rem);    /* 次標題 */
-    --font-size-md: clamp(1rem, 2.5vw, 1.2rem);    /* 正文 */
-    --font-size-sm: clamp(0.875rem, 2vw, 1rem);    /* 小字 */
+    --font-size-xl: clamp(1.5rem, 3vw, 2.5rem);    /* 大標題，更合理的範圍 */
+    --font-size-lg: clamp(1.1rem, 2.5vw, 1.6rem);  /* 次標題，稍微縮小 */
+    --font-size-md: clamp(0.9rem, 2vw, 1.2rem);    /* 正文，更適合手機閱讀 */
+    --font-size-sm: clamp(0.8rem, 1.8vw, 1rem);    /* 小字，確保最小可讀性 */
     --line-height-loose: 1.8;                       /* 寬鬆行高 */
     --line-height-tight: 1.5;                       /* 緊湊行高 */
 }
@@ -1256,4 +1256,96 @@ main {
 
 #scrollToTop:hover {
     background-color: #0d3a8e; /* 懸停時的背景色 */
+} 
+
+/* 優化行前須知卡片在手機上的顯示 */
+@media screen and (max-width: 768px) {
+    .info-card {
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .info-card h3 {
+        font-size: var(--font-size-md);
+        margin-bottom: 0.5rem;
+    }
+    
+    .info-card li {
+        font-size: var(--font-size-sm);
+        line-height: var(--line-height-tight);
+        margin-bottom: 0.3rem;
+        padding: 0.2rem 0;
+    }
+}
+
+/* 優化每日行程卡片在手機上的顯示 */
+@media screen and (max-width: 768px) {
+    .day-card {
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .day-card h3 {
+        font-size: var(--font-size-lg);
+        padding: 0.5rem 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .time-block {
+        margin-bottom: 0.8rem;
+    }
+    
+    .time {
+        font-size: var(--font-size-sm);
+        padding: 0.3rem 0.5rem;
+        min-width: 60px;
+    }
+    
+    .activity {
+        padding: 0.8rem;
+    }
+    
+    .activity h4 {
+        font-size: var(--font-size-md);
+        margin-bottom: 0.5rem;
+    }
+    
+    .activity p,
+    .activity li {
+        font-size: var(--font-size-sm);
+        line-height: var(--line-height-tight);
+        margin-bottom: 0.4rem;
+    }
+    
+    .notice-important,
+    .notice-warning,
+    .notice-tips,
+    .notice-cost {
+        padding: 0.6rem 0.8rem;
+        margin: 0.4rem 0;
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* 特小螢幕的額外優化 */
+@media screen and (max-width: 320px) {
+    .day-card {
+        padding: 0.6rem;
+    }
+    
+    .activity {
+        padding: 0.6rem;
+    }
+    
+    .time {
+        min-width: 55px;
+        padding: 0.2rem 0.4rem;
+    }
+    
+    .notice-important,
+    .notice-warning,
+    .notice-tips,
+    .notice-cost {
+        padding: 0.5rem 0.6rem;
+    }
 } 
