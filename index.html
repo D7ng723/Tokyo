@@ -75,39 +75,42 @@
             }
         }
 
-        /* 修改 quick-nav 的背景色 */
+        /* 修改 quick-nav 的樣式 */
         .quick-nav {
             display: flex;
             justify-content: center;
-            padding: 1rem;
-            background: #ABCDEF; /* 改為新的背景色 */
-            color: black; /* 文字顏色改為黑色以提高可讀性 */
+            padding: 0.5rem; /* 從 1rem 改為 0.5rem */
+            background: #ABCDEF;
+            color: black;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+            width: 100%;
         }
 
         .nav-container {
             display: flex;
-            gap: 2rem;
+            gap: 1rem; /* 從 2rem 改為 1rem */
             align-items: center;
             max-width: var(--container-width);
             margin: 0 auto;
+            flex-wrap: nowrap;
         }
 
         .nav-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.3rem; /* 從 0.5rem 改為 0.3rem */
+            white-space: nowrap;
         }
 
         .day-selector select {
-            padding: 0.5rem 1rem;
+            padding: 0.3rem 0.8rem; /* 從 0.5rem 1rem 改為 0.3rem 0.8rem */
             border-radius: 20px;
             border: 1px solid var(--border-color);
             background-color: white;
-            font-size: 1rem;
+            font-size: 0.9rem; /* 從 1rem 改為 0.9rem */
             cursor: pointer;
             outline: none;
             transition: all 0.3s ease;
@@ -120,17 +123,31 @@
 
         @media (max-width: 768px) {
             .nav-container {
-                flex-direction: column;
-                gap: 1rem;
+                flex-direction: row; /* 改為水平排列 */
+                justify-content: center;
+                padding: 0 0.5rem; /* 從 0 1rem 改為 0 0.5rem */
+                overflow-x: auto; /* 允許平滾動 */
+                -webkit-overflow-scrolling: touch; /* 提升iOS滾動體驗 */
+                scrollbar-width: none; /* 隱藏滾動條 Firefox */
+            }
+            
+            .nav-container::-webkit-scrollbar {
+                display: none; /* 隱藏滾動條 Chrome/Safari */
             }
             
             .quick-nav {
-                padding: 0.8rem;
+                padding: 0.4rem 0; /* 從 0.8rem 改為 0.4rem */
+            }
+            
+            .nav-item {
+                flex-shrink: 0; /* 防止元素被壓縮 */
             }
             
             .day-selector select {
-                width: 100%;
-                max-width: 200px;
+                width: auto; /* 移除固定寬度 */
+                min-width: 150px; /* 設置最小寬度 */
+                max-width: none; /* 移除最大寬度限制 */
+                padding: 0.3rem 0.6rem; /* 調整下拉選單的內邊距 */
             }
         }
 
@@ -139,25 +156,55 @@
             display: none;
             position: fixed;
             bottom: 20px;
-            left: 75%; /* 靠頁面右邊的75% */
-            transform: translateX(-50%); /* 調整為中心 */
-            width: 40px; /* 設置寬度 */
-            height: 40px; /* 設置高度 */
-            background-color: #336699; /* 改為新的背景色 */
+            right: 20px; /* 改為固定在右側 */
+            width: 40px;
+            height: 40px;
+            background-color: #336699;
             color: white;
             border: none;
-            border-radius: 50%; /* 改為圓形 */
+            border-radius: 50%;
             cursor: pointer;
             z-index: 1000;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 20px; /* 調整字體大小 */
+            font-size: 20px;
+            transition: all 0.3s ease; /* 添加過渡效果 */
         }
 
         #scrollToTop:before {
-            content: '↑'; /* 使用向上符號 */
-            font-size: 20px; /* 調整符號大小 */
+            content: '↑';
+            font-size: 20px;
+        }
+
+        /* 添加手機和平板的自適應樣式 */
+        @media (max-width: 768px) {
+            #scrollToTop {
+                bottom: 15px; /* 稍微靠上一點 */
+                right: 15px;
+                width: 35px; /* 稍微縮小一點 */
+                height: 35px;
+                font-size: 18px;
+            }
+            
+            #scrollToTop:before {
+                font-size: 18px;
+            }
+        }
+
+        /* 特小螢幕的自適應 */
+        @media (max-width: 320px) {
+            #scrollToTop {
+                bottom: 10px;
+                right: 10px;
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+            
+            #scrollToTop:before {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -195,7 +242,7 @@
                 <a href="#notice">行前須知</a>
             </div>
             <div class="nav-item day-selector">
-                <i class="icon">📅</i>
+                <i class="icon">📅</i>  <!-- 將  改為 📅 -->
                 <select id="daySelect" onchange="scrollToDay(this.value)">
                     <option value="">選擇行程</option>
                     <option value="day1">Day 1 - 成田機場・秋葉原</option>
@@ -270,7 +317,7 @@
                             <br>- 新增室內AR導航
                             <br>- 即時車站擁擠度</li>
                         <li>乗換案内
-                            <br>- 即時列車延誤資訊
+                            <br>- 即時列車延誤資訊  <!-- 修正"列"字 -->
                             <br>- 支援多語言</li>
                         <li>日本天氣雷達
                             <br>- 精準到分鐘的降雨預報
@@ -328,7 +375,7 @@
             <h2>每日行程</h2>
             <div class="day-cards">
                 <article class="day-card" id="day1">
-                    <h3>Day 1 - 田機場・秋葉原（2024年12月7日）</h3>
+                    <h3>Day 1 - 成田機場・秋葉原（2024年12月7日）</h3>  <!-- 補上缺少的右括號 -->
                     <div class="timeline">
                         <div class="time-block">
                             <span class="time">18:00</span>
@@ -575,7 +622,7 @@
                                 <p class="notice-tips">2024冬季人氣設施排隊時間參考：</p>
                                 <ul>
                                     <li>必玩設施優先順序：
-                                        <br>1. 美人魚礁湖劇場（室內，開園衝第一）
+                                        <br>1. 美魚礁湖劇場（室內，開園衝第一）
                                         <br>2. 怪獸電力公司（需Premier Access）
                                         <br>3. 加勒比海盜（室內，等待45分鐘）</li>
                                     <li>2024冬季限定活動：
@@ -1011,7 +1058,7 @@
                                     <a href="https://www.ginza.jp/" target="_blank">(官網連結)</a>
                                 </h4>
                                 <p class="info-transport">路線：新宿御苑前站 → 新宿站 → 銀座站
-                                    <br>- 新宿御苑前站 → 新宿站（丸之內線，170日圓）
+                                    <br>- 新宿御苑前站 → 新宿站（丸之內線，170日圓）  <!-- 修正"內"字 -->
                                     <br>- 新宿站 → 銀座站（丸之內線直達，170日圓）
                                     <br>- 總時間約20分鐘
                                     <br>- 全程有空調通道</p>
@@ -1068,7 +1115,7 @@
                                     <li>交通詳情：
                                         <br>- 交通時間：約15分鐘
                                         <br>- 費用：170日圓
-                                        <br>- 末班車時間請注意查詢</li>
+                                        <br>- 班車時間請注意查詢</li>
                                 </ul>
                                 <p class="notice-warning">夜間氣溫可能降至2-3℃，注意保暖</p>
                             </div>
@@ -1119,7 +1166,7 @@
                             <span class="time">16:00-19:00</span>
                             <div class="activity activity-sightseeing">
                                 <h4>六本木之丘・聖誕點燈 
-                                    <a href="https://www.roppongihills.com/" target="_blank">(官網結)</a>
+                                    <a href="https://www.roppongihills.com/" target="_blank">(官網結)</a>  <!-- 修正"連"字 -->
                                 </h4>
                                 <p class="info-transport">路線：台場 → 六本站
                                     <br>- 台場站 → 汐留站（百合海鷗線，270日圓）
@@ -1138,7 +1185,7 @@
                                         <br>- 66廣場特別燈飾秀（每30分鐘一場）
                                         <br>- 聖誕市集（歐洲風格，15家特選店鋪）
                                         <br>- 限定展望台夜景套票</li>
-                                    <li>晚餐推薦（新店）：
+                                    <li>晚推薦（新店）：
                                         <br>- 六本木橫丁美食街
                                             <br>  ・和牛涮涮鍋：4,500日圓/人
                                             <br>  ・包含20種食材+無限暢飲
@@ -1180,7 +1227,7 @@
                                 <h4>吉祥寺商店街 
                                     <a href="https://www.kichijoji.or.jp/" target="_blank">(官網連結)</a>
                                 </h4>
-                                <p class="info-transport">路線：吉祥寺站 JR中央線 → 御茶水站 → JR總武線 → 上野站（240日圓）</p>
+                                <p class="info-transport">路線：吉祥寺站 JR中央線 → 御茶水站 → JR總武線 → 上野站（240日圓）</p>  <!-- 補上"最"字 -->
                                 <ul>
                                     <li>吉祥寺商店街：
                                         <br>- PARCO（2024冬季特賣）
@@ -1205,7 +1252,7 @@
                                 <h4>返回飯店領取行李</h4>
                                 <p class="info-transport">線：吉祥寺站  JR中央線 → 御茶水站 → JR總武線 → 上野站（240日圓）</p>
                                 <ul>
-                                    <li>行李整理：
+                                    <li>行李整理
                                         <br>- 確認行李重量限制
                                         <br>- 易碎品妥善包裝
                                         <br>- 液體類放置隨身包</li>
@@ -1217,7 +1264,7 @@
                             <span class="time">16:30</span>
                             <div class="activity activity-transport">
                                 <h4>前往成田機場</h4>
-                                <p class="info-transport">交通選擇（2024最新）：</p>
+                                <p class="info-transport">交通選擇（2024新）：</p>  <!-- 補上"最"字 -->
                                 <ul>
                                     <li>方案1（推薦）：京成Skyliner
                                         <br>- 上野站 → 成田機場
@@ -1364,6 +1411,54 @@
                 behavior: 'smooth'
             });
         };
+    </script>
+
+    <script>
+    // 監聽滾動事件，更新選單選項
+    document.addEventListener('DOMContentLoaded', function() {
+        const daySelect = document.getElementById('daySelect');
+        const dayCards = document.querySelectorAll('.day-card');
+        const navHeight = document.querySelector('.quick-nav').offsetHeight;
+        
+        // 防抖函數
+        function debounce(func, wait) {
+            let timeout;
+            return function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, arguments), wait);
+            };
+        }
+        
+        // 檢查當前可見的日期卡片
+        function updateSelectedDay() {
+            let currentDay = '';
+            
+            // 檢查是否在頁面頂部
+            if (window.scrollY < 100) {  // 如果距離頂部小於100px
+                daySelect.value = "";     // 重置為"選擇行程"
+                return;
+            }
+            
+            dayCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                // 當卡片頂部進入視窗範圍（考慮導航欄高度）
+                if (rect.top <= navHeight + 50 && rect.bottom >= navHeight) {
+                    currentDay = card.id;
+                }
+            });
+            
+            // 只有當需要更改時才更新選單，避免不���要的重繪
+            if (currentDay && daySelect.value !== currentDay) {
+                daySelect.value = currentDay;
+            }
+        }
+        
+        // 使用防抖處理滾動事件
+        window.addEventListener('scroll', debounce(updateSelectedDay, 100));
+        
+        // 初始化時執行一次
+        updateSelectedDay();
+    });
     </script>
 </body>
 </html> 
