@@ -413,28 +413,47 @@ a:hover {
 }
 
 /* 確保頁面從頂部開始顯示 */
-html {
-    scroll-behavior: smooth;  /* 保持平滑滾動 */
-    scroll-padding-top: 0;   /* 重置滾動偏移 */
+html, body {
+    scroll-behavior: smooth;
+    scroll-padding-top: 0;
+    overflow-x: hidden;
 }
 
-/* 修正導航欄定位 */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* 頁面頂部優化 */
+.page-header {
+    margin: 0;
+    padding: 3rem 0;
+    width: 100%;
+}
+
+/* 導航欄優化 */
 .quick-nav {
     position: sticky;
     top: 0;
-    z-index: 1000;
     width: 100%;
+    z-index: 1000;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
 }
 
-/* 確保頁面頂部元素正確顯示 */
-.page-header {
-    margin-top: 0;           /* 移除頂部間距 */
-    padding-top: 3rem;       /* 添加適當的頂部內邊距 */
+/* 移除所有自動滾動到錨點的行為 */
+[id] {
+    scroll-margin-top: 0;
 }
 
-/* 防止錨點跳轉時的位置偏移 */
-[id] {
-    scroll-margin-top: 60px; /* 為錨點添加滾動邊距 */
+/* 主要內容區域調整 */
+main {
+    padding: 0 1rem;
+}
+
+/* 防止頁面自動跳轉到特定區域 */
+.notice-section,
+.daily-plan {
+    scroll-margin-top: 0;
 }
