@@ -16,12 +16,19 @@
     --tablet-padding: 2rem;
     --desktop-padding: 3rem;
     --section-background: #ffffff;
-    --font-size-xl: clamp(1.5rem, 3vw, 2.5rem);    /* 大標題，更合理的範圍 */
-    --font-size-lg: clamp(1.1rem, 2.5vw, 1.6rem);  /* 次標題，稍微縮小 */
-    --font-size-md: clamp(0.9rem, 2vw, 1.2rem);    /* 正文，更適合手機閱讀 */
-    --font-size-sm: clamp(0.8rem, 1.8vw, 1rem);    /* 小字，確保最小可讀性 */
+    --font-size-xl: clamp(1.8rem, 5vw, 2.5rem);    /* 大標題 */
+    --font-size-lg: clamp(1.2rem, 4vw, 1.8rem);  /* 次標題 */
+    --font-size-md: clamp(1rem, 3vw, 1.2rem);    /* 正文 */
+    --font-size-sm: clamp(0.875rem, 2.5vw, 1rem);  /* 小字 */
     --line-height-loose: 1.8;                       /* 寬鬆行高 */
     --line-height-tight: 1.5;                       /* 緊湊行高 */
+    --spacing-xl: clamp(2rem, 5vw, 3rem);
+    --spacing-lg: clamp(1.5rem, 4vw, 2rem);
+    --spacing-md: clamp(1rem, 3vw, 1.5rem);
+    --spacing-sm: clamp(0.5rem, 2vw, 1rem);
+    --border-radius-lg: clamp(8px, 2vw, 12px);
+    --border-radius-md: clamp(6px, 1.5vw, 8px);
+    --border-radius-sm: clamp(4px, 1vw, 6px);
 }
 
 * {
@@ -45,6 +52,7 @@ body {
     color: var(--text-primary);
     background-color: var(--background-color);
     letter-spacing: 0.3px;
+    font-size: clamp(14px, 2.5vw, 16px);
 }
 
 /* 標題樣式優化 */
@@ -1071,7 +1079,7 @@ main {
 
 /* 添加資訊類型圖標 */
 .info-transport::before { content: '🚇'; }
-.info-cost::before { content: '��'; }
+.info-cost::before { content: '💰'; }
 .info-time::before { content: '⏰'; }
 .info-location::before { content: '📍'; }
 .info-tips::before { content: '💡'; }
@@ -1585,3 +1593,163 @@ main {
         margin-top: 115px;
     }
 } 
+
+/* 根元素自適應設置 */
+:root {
+    /* 自適應字體大小 */
+    --font-size-xl: clamp(1.8rem, 5vw, 2.5rem);     /* 大標題 */
+    --font-size-lg: clamp(1.2rem, 4vw, 1.8rem);     /* 次標題 */
+    --font-size-md: clamp(1rem, 3vw, 1.2rem);       /* 正文 */
+    --font-size-sm: clamp(0.875rem, 2.5vw, 1rem);   /* 小字 */
+    
+    /* 自適應間距 */
+    --spacing-xl: clamp(2rem, 5vw, 3rem);
+    --spacing-lg: clamp(1.5rem, 4vw, 2rem);
+    --spacing-md: clamp(1rem, 3vw, 1.5rem);
+    --spacing-sm: clamp(0.5rem, 2vw, 1rem);
+    
+    /* 自適應容器寬度 */
+    --container-width: min(90%, 1200px);
+    --card-padding: clamp(0.8rem, 3vw, 1.2rem);
+    
+    /* 自適應邊框 */
+    --border-radius-lg: clamp(8px, 2vw, 12px);
+    --border-radius-md: clamp(6px, 1.5vw, 8px);
+    --border-radius-sm: clamp(4px, 1vw, 6px);
+}
+
+/* 基礎元素自適應 */
+body {
+    font-size: clamp(14px, 2.5vw, 16px);
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+}
+
+/* 容器自適應 */
+.container {
+    width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* 卡片自適應 */
+.info-card, .day-card, .activity {
+    padding: var(--card-padding);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-md);
+}
+
+/* 標題自適應 */
+h1 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+h3 {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* 導航欄自適應 */
+.quick-nav {
+    padding: clamp(0.3rem, 1vw, 0.5rem) 0;
+}
+
+.nav-item {
+    padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.6rem, 2vw, 0.8rem);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+}
+
+/* 時間軸自適應 */
+.timeline {
+    padding-left: clamp(1rem, 3vw, 2rem);
+}
+
+.time {
+    font-size: var(--font-size-sm);
+    padding: clamp(0.2rem, 1vw, 0.3rem) clamp(0.4rem, 2vw, 0.8rem);
+    border-radius: var(--border-radius-sm);
+}
+
+/* 活動內容自適應 */
+.activity h4 {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.activity p, .activity li {
+    font-size: var(--font-size-sm);
+    margin-bottom: clamp(0.3rem, 1vw, 0.6rem);
+}
+
+/* 手機版特別優化 */
+@media screen and (max-width: 768px) {
+    /* 調整容器邊距 */
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* 調整卡片樣式 */
+    .info-card, .day-card, .activity {
+        padding: calc(var(--card-padding) * 0.8);
+    }
+    
+    /* 調整導航欄 */
+    .nav-container {
+        gap: calc(var(--spacing-sm) * 0.5);
+    }
+    
+    /* 調整時間軸 */
+    .timeline {
+        padding-left: calc(var(--spacing-md) * 0.8);
+    }
+    
+    /* 優化列表顯示 */
+    .activity ul {
+        padding-left: var(--spacing-md);
+    }
+}
+
+/* 特小螢幕優化 */
+@media screen and (max-width: 320px) {
+    :root {
+        /* 進一步縮小間距 */
+        --card-padding: clamp(0.6rem, 2vw, 0.8rem);
+    }
+    
+    /* 調整導航項目 */
+    .nav-item {
+        padding: 0.2rem 0.4rem;
+    }
+    
+    /* 調整時間顯示 */
+    .time {
+        padding: 0.2rem 0.4rem;
+    }
+}
+
+/* 優化圖片自適應 */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 表格自適應 */
+table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+
+/* 優化表單元素自適應 */
+input, select, textarea {
+    font-size: var(--font-size-sm);
+    padding: clamp(0.3rem, 1vw, 0.5rem);
+    border-radius: var(--border-radius-sm);
+}
