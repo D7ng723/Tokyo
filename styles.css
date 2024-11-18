@@ -396,31 +396,19 @@ h4 {
 
 /* 優化快速導航樣式 */
 .quick-nav {
-    display: flex;
-    justify-content: center;
     padding: 0.3rem 0;
     background: linear-gradient(to right, #E3F2FD, #BBDEFB, #E3F2FD);
-    color: #1a1a1a;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    width: 100%;
 }
 
 .nav-container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
+    justify-content: flex-start;
+    gap: 0.3rem;
     padding: 0 0.5rem;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    width: 100%;
 }
 
 .nav-container::-webkit-scrollbar {
@@ -663,8 +651,8 @@ h4 {
 
 /* 修改行前準備區塊的樣式 */
 .notice-section {
-    margin-top: 0.1rem;
-    padding-top: 0.1rem;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .info-container {
@@ -761,8 +749,8 @@ h4 {
 
 /* 頁面容器 */
 main {
-    margin-top: 60px;
-    padding: 1rem var(--desktop-padding);
+    margin-top: 85px;
+    padding: 0 var(--desktop-padding);
     max-width: 100%;
     margin: 0 auto;
 }
@@ -1083,7 +1071,7 @@ main {
 
 /* 添加資訊類型圖標 */
 .info-transport::before { content: '🚇'; }
-.info-cost::before { content: '💴'; }
+.info-cost::before { content: '��'; }
 .info-time::before { content: '⏰'; }
 .info-location::before { content: '📍'; }
 .info-tips::before { content: '💡'; }
