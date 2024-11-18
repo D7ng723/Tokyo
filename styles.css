@@ -453,87 +453,68 @@ h4 {
 
 /* 下拉選單樣式優化 */
 .day-selector select {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    border: 1px solid var(--border-color);
-    background-color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.3s ease;
     width: 100%;
     max-width: 300px;
-    color: #333;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    background-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: clamp(14px, 3.5vw, 16px);  /* 自適應字體大小 */
+    padding: 0.8rem 1rem;
 }
 
-/* 優化選項組和選項樣式 */
 .day-selector select optgroup {
-    font-size: 1.2rem;
+    font-size: clamp(16px, 4vw, 18px);  /* Day標題自適應大小 */
     font-weight: 700;
+    padding: 1rem 0.5rem;
     background-color: #f0f4f8;
-    padding: 0.8rem 0.5rem;
     color: #1a365d;
-    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .day-selector select option {
-    font-size: 0.95rem;
-    padding: 0.8rem 1rem;
-    background-color: white;
-    color: #2d3748;
-    font-weight: 400;
+    font-size: clamp(13px, 3.2vw, 14px);  /* 子選項自適應大小 */
+    padding: 0.8rem 1.2rem;
+    line-height: 1.6;
+    color: #4a5568;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* 手機版特別優化 */
 @media screen and (max-width: 768px) {
     .day-selector select {
-        font-size: 16px;
-        padding: 0.8rem 1rem;
-        margin: 0.3rem 0;
-        width: 300px;
+        width: min(90vw, 300px);  /* 自適應寬度 */
+        margin: 0.3rem auto;
     }
 
-    .day-selector select optgroup {
-        font-size: 18px;  /* Day標題更大 */
-        font-weight: 700;
-        padding: 1rem 0.5rem;
-        background-color: #f0f4f8;
-        color: #1a365d;
+    .nav-container {
+        justify-content: center;
+        padding: 0 0.5rem;
     }
 
-    .day-selector select option {
-        font-size: 14px;  /* 子選項更小 */
-        padding: 0.8rem 1.2rem;  /* 增加左邊距，形成層級感 */
-        line-height: 1.6;
-        color: #4a5568;
-    }
-
-    /* 改善選項的可點擊區域和視覺層級 */
-    .day-selector select option {
-        min-height: 40px;
-        padding-left: 1.5rem;  /* 子選項縮進 */
+    .day-selector {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }
 
 /* 特小螢幕的額外優化 */
 @media screen and (max-width: 320px) {
     .day-selector select {
-        width: 280px;
+        width: min(95vw, 280px);
+        font-size: clamp(13px, 3.2vw, 14px);
     }
 
     .day-selector select optgroup {
-        font-size: 17px;  /* 稍微調小一點 */
+        font-size: clamp(15px, 3.8vw, 16px);
     }
 
     .day-selector select option {
-        font-size: 13px;
+        font-size: clamp(12px, 3vw, 13px);
     }
 }
 
