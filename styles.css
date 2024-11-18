@@ -394,41 +394,41 @@ h4 {
     line-height: var(--line-height-tight);
 }
 
-/* 快速導航樣式優化 */
+/* 優化快速導航樣式 */
 .quick-nav {
     display: flex;
     justify-content: center;
-    padding: 0.3rem;
-    background: linear-gradient(to right, #E3F2FD, #BBDEFB, #E3F2FD); /* 漸層背景 */
+    padding: 0.5rem;
+    background: linear-gradient(to right, #E3F2FD, #BBDEFB, #E3F2FD);
     color: #1a1a1a;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     position: sticky;
     top: 0;
     z-index: 100;
     width: 100%;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
 .nav-container {
     display: flex;
-    gap: 0.5rem;
     align-items: center;
+    justify-content: center;
+    gap: 1rem;
     max-width: var(--container-width);
     margin: 0 auto;
-    flex-wrap: nowrap;
     padding: 0 1rem;
+    width: 100%;
 }
 
 .nav-item {
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    white-space: nowrap;
-    padding: 0.35rem 0.8rem;
-    background: white; /* 改為純白背景 */
+    padding: 0.5rem 1rem;
+    background: white;
     border-radius: 20px;
     transition: all 0.2s ease;
     border: 1px solid #e0e0e0;
+    white-space: nowrap;
 }
 
 .nav-item:hover {
@@ -1430,5 +1430,96 @@ main {
     
     .nav-item {
         padding: 0.2rem 0.4rem;
+    }
+} 
+
+/* 優化快速導航樣式 */
+.quick-nav {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    background: linear-gradient(to right, #E3F2FD, #BBDEFB, #E3F2FD);
+    color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+    border: 1px solid #e0e0e0;
+    white-space: nowrap;
+}
+
+/* 手機版特別優化 */
+@media screen and (max-width: 768px) {
+    .quick-nav {
+        padding: 0.5rem 0;
+    }
+
+    .nav-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0 0.5rem;
+        overflow-x: visible;
+        width: 100%;
+    }
+
+    .nav-item {
+        flex: 0 0 auto;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+        min-height: 36px;
+    }
+
+    /* 選擇器容器優化 */
+    .day-selector {
+        width: auto;
+        min-width: 180px;
+    }
+
+    .day-selector select {
+        width: 100%;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* 特小螢幕的額外優化 */
+@media screen and (max-width: 320px) {
+    .nav-container {
+        gap: 0.5rem;
+        padding: 0 0.3rem;
+    }
+
+    .nav-item {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    .nav-item .icon {
+        font-size: 0.9rem;
     }
 } 
