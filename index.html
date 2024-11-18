@@ -243,16 +243,74 @@
             </div>
             <div class="nav-item day-selector">
                 <i class="icon">📅</i>
-                <select id="daySelect" onchange="scrollToDay(this.value)">
+                <select id="daySelect" onchange="scrollToTimeBlock(this.value)">
                     <option value="">選擇行程</option>
-                    <option value="day1">Day 1 - 成田機場</option>
-                    <option value="day2">Day 2 - 淺草寺-晴空塔-秋葉原</option>
-                    <option value="day3">Day 3 - 迪士尼</option>
-                    <option value="day4">Day 4 - 明治神宮-原宿-涉谷</option>
-                    <option value="day5">Day 5 - 哈利波特</option>
-                    <option value="day6">Day 6 - 吉卜力-新宿-銀座</option>
-                    <option value="day7">Day 7 - TeamLab 無界-台場</option>
-                    <option value="day8">Day 8 - 吉祥寺-成田機場</option>
+                    <optgroup label="Day 1 - 成田機場">
+                        <option value="day1-2000">20:00 - 抵達成田機場第二航廈</option>
+                        <option value="day1-2030">20:30-21:30 - 前往APA Hotel</option>
+                    </optgroup>
+                    <optgroup label="Day 2 - 淺草寺・晴空塔・秋葉原">
+                        <option value="day2-0800">08:00 - 飯店出發</option>
+                        <option value="day2-0830">08:30-11:30 - 淺草寺・仲見世通り</option>
+                        <option value="day2-1200">12:00-16:00 - 東京晴空塔</option>
+                        <option value="day2-1630">16:30-20:00 - 秋葉原夜景散步</option>
+                        <option value="day2-2000">20:00-20:30 - 返回飯店</option>
+                    </optgroup>
+                    <optgroup label="Day 3 - 迪士尼">
+                        <option value="day3-0700">07:00-07:30 - 飯店出發</option>
+                        <option value="day3-0730">07:30-08:00 - 入園準備</option>
+                        <option value="day3-0800">08:00-12:00 - 早上行程</option>
+                        <option value="day3-1200">12:00-13:00 - 午餐時間</option>
+                        <option value="day3-1300">13:00-17:00 - 下午行程</option>
+                        <option value="day3-1700">17:00-18:00 - 晚餐時間</option>
+                        <option value="day3-1800">18:00-21:00 - 夜間行程</option>
+                        <option value="day3-2100">21:00-22:00 - 返回飯店</option>
+                    </optgroup>
+                    <optgroup label="Day 4 - 明治神宮・原宿・涉谷">
+                        <option value="day4-0900">09:00 - 飯店出發</option>
+                        <option value="day4-0930">09:30-11:30 - 明治神宮參拜</option>
+                        <option value="day4-1130">11:30-14:30 - 原宿竹下通・表參道</option>
+                        <option value="day4-1500">15:00-19:00 - 涉谷天空・夜景觀賞</option>
+                        <option value="day4-1930">19:30-21:00 - 返回飯店</option>
+                    </optgroup>
+                    <optgroup label="Day 5 - 哈利波特">
+                        <option value="day5-1100">11:00-11:30 - 飯店出發</option>
+                        <option value="day5-1130">11:30-12:00 - 入場準備</option>
+                        <option value="day5-1200">12:00-14:30 - 參觀路線第一部分</option>
+                        <option value="day5-1430">14:30-15:00 - The Backlot Café用餐</option>
+                        <option value="day5-1500">15:00-17:30 - 參觀路線第二部分</option>
+                        <option value="day5-1730">17:30-19:00 - Studio Tour Shop購物</option>
+                        <option value="day5-1900">19:00-19:30 - 返回飯店</option>
+                    </optgroup>
+                    <optgroup label="Day 6 - 吉卜力・新宿・銀座">
+                        <option value="day6-0930">09:30 - 飯店出發</option>
+                        <option value="day6-1030">10:30 - 入場準備</option>
+                        <option value="day6-1100">11:00-14:00 - 美術館參觀</option>
+                        <option value="day6-1400">14:00-15:00 - 館內用餐</option>
+                        <option value="day6-1500">15:00-16:30 - 紀念品購物</option>
+                        <option value="day6-1630">16:30-17:00 - 前往新宿</option>
+                        <option value="day6-1700">17:00-19:00 - 新宿夜景觀賞</option>
+                        <option value="day6-1900">19:00-19:30 - 前往銀座</option>
+                        <option value="day6-1930">19:30-21:30 - 銀座夜景散策</option>
+                        <option value="day6-2130">21:30-22:00 - 返回飯店</option>
+                    </optgroup>
+                    <optgroup label="Day 7 - TeamLab 無界・台場">
+                        <option value="day7-0900">09:00-09:30 - 飯店出發</option>
+                        <option value="day7-0930">09:30-13:30 - teamLab Borderless</option>
+                        <option value="day7-1330">13:30-14:00 - EN TEA HOUSE幻花亭</option>
+                        <option value="day7-1400">14:00-14:30 - 前往台場</option>
+                        <option value="day7-1430">14:30-18:00 - 台場購物</option>
+                        <option value="day7-1800">18:00-18:45 - 台場晚餐</option>
+                        <option value="day7-1845">18:45-19:30 - 獨角獸鋼彈夜間展演</option>
+                        <option value="day7-1930">19:30-20:30 - 返回飯店</option>
+                    </optgroup>
+                    <optgroup label="Day 8 - 吉祥寺・成田機場">
+                        <option value="day8-0900">09:00 - 飯店出發</option>
+                        <option value="day8-1000">10:00-14:00 - 吉祥寺商店街</option>
+                        <option value="day8-1430">14:30-16:00 - 返回飯店領取行李</option>
+                        <option value="day8-1600">16:00-18:55 - 前往成田機場</option>
+                        <option value="day8-1855">18:55-21:25 - 機場手續</option>
+                    </optgroup>
                 </select>
             </div>
         </div>
@@ -1500,7 +1558,7 @@
                                     <li>井之頭公園：
                                         <br>- 冬季野鳥觀察
                                         <br>- 吉卜力美術館外觀
-                                        <br>- 湖畔散策（天氣允許時）</li>
+                                        <br>- 湖畔散策（天氣允許）</li>
                                     <li>午餐推薦：
                                         <br>- 榮町堂街
                                         <br>- 人氣咖哩飯：980日圓
@@ -1708,6 +1766,92 @@
         
         // 初始化時執行次
         updateSelectedDay();
+    });
+    </script>
+
+    <!-- 添加新的JavaScript函數來處理細分時段的跳轉 -->
+    <script>
+    function scrollToTimeBlock(value) {
+        if (!value) return;
+        
+        const [day, time] = value.split('-');
+        const dayElement = document.getElementById(day);
+        
+        if (dayElement) {
+            // 找到對應的時間區塊
+            const timeBlocks = dayElement.querySelectorAll('.time-block');
+            let targetBlock = null;
+            
+            timeBlocks.forEach(block => {
+                const timeSpan = block.querySelector('.time');
+                if (timeSpan) {
+                    // 處理時間格式
+                    const blockTime = timeSpan.textContent.split('-')[0].trim().replace(':', '');
+                    const targetTime = time;
+                    
+                    if (blockTime === targetTime) {
+                        targetBlock = block;
+                    }
+                }
+            });
+            
+            if (targetBlock) {
+                const navHeight = document.querySelector('.quick-nav').offsetHeight;
+                const elementPosition = targetBlock.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }
+
+    // 更新監聽滾動事件的函數
+    document.addEventListener('DOMContentLoaded', function() {
+        const daySelect = document.getElementById('daySelect');
+        const timeBlocks = document.querySelectorAll('.time-block');
+        const navHeight = document.querySelector('.quick-nav').offsetHeight;
+        
+        function debounce(func, wait) {
+            let timeout;
+            return function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, arguments), wait);
+            };
+        }
+        
+        function updateSelectedTimeBlock() {
+            if (window.scrollY < 100) {
+                daySelect.value = "";
+                return;
+            }
+            
+            let currentBlock = '';
+            
+            timeBlocks.forEach(block => {
+                const rect = block.getBoundingClientRect();
+                if (rect.top <= navHeight + 50 && rect.bottom >= navHeight) {
+                    const dayCard = block.closest('.day-card');
+                    if (dayCard && dayCard.id) {
+                        const timeSpan = block.querySelector('.time');
+                        if (timeSpan) {
+                            // 處理時間格式
+                            const blockTime = timeSpan.textContent.split('-')[0].trim().replace(':', '');
+                            currentBlock = `${dayCard.id}-${blockTime}`;
+                        }
+                    }
+                }
+            });
+            
+            if (currentBlock && daySelect.value !== currentBlock) {
+                daySelect.value = currentBlock;
+            }
+        }
+        
+        window.addEventListener('scroll', debounce(updateSelectedTimeBlock, 100));
+        updateSelectedTimeBlock();
     });
     </script>
 </body>
