@@ -12,11 +12,11 @@
     --border-color: #e5e7eb;       /* 邊框色：淺灰 */
     
     /* 優化字體大小 */
-    --font-size-xl: clamp(1.5rem, 5vw, 2rem);
-    --font-size-lg: clamp(1.3rem, 4vw, 1.7rem);
-    --font-size-md: clamp(1.1rem, 3vw, 1.4rem);
-    --font-size-base: clamp(0.95rem, 2.5vw, 1.1rem);
-    --font-size-sm: clamp(0.85rem, 2vw, 0.95rem);
+    --font-size-xl: clamp(1.3rem, 4vw, 1.8rem);
+    --font-size-lg: clamp(1.1rem, 3.5vw, 1.5rem);
+    --font-size-md: clamp(1rem, 3vw, 1.2rem);
+    --font-size-base: clamp(0.9rem, 2.5vw, 1rem);
+    --font-size-sm: clamp(0.8rem, 2vw, 0.9rem);
 }
 
 /* 全局文字優化 */
@@ -26,6 +26,9 @@ body {
     color: var(--text-primary);
     background-color: var(--background-secondary);
     letter-spacing: 0.015em;
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    min-height: 100vh;
 }
 
 /* Day 卡片樣式優化 */
@@ -33,8 +36,8 @@ body {
     background: var(--background-primary);
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
     border: 1px solid var(--border-color);
     transition: transform 0.2s ease;
 }
@@ -82,11 +85,11 @@ body {
 .notice-warning,
 .notice-important,
 .notice-tips {
-    padding: 0.8rem 1rem;
+    padding: 0.6rem 0.8rem;
     border-radius: 8px;
     margin: 0.8rem 0;
-    font-size: var(--font-size-base);
-    line-height: 1.5;
+    font-size: calc(var(--font-size-base) * 0.95);
+    line-height: 1.4;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -116,9 +119,10 @@ body {
 .activity li {
     position: relative;
     padding-left: 0.8rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
     color: var(--text-secondary);
+    font-size: calc(var(--font-size-base) * 0.95);
 }
 
 .activity li::before {
@@ -194,7 +198,13 @@ a:hover {
     .notice-warning,
     .notice-important,
     .notice-tips {
-        padding: 0.6rem 0.8rem;
+        padding: 0.5rem 0.7rem;
+    }
+    
+    .activity li,
+    .info-card li {
+        font-size: calc(var(--font-size-base) * 0.9);
+        line-height: 1.3;
     }
 }
 
@@ -237,4 +247,194 @@ a:hover {
         font-size: calc(var(--font-size-sm) * 0.95);
         padding: 0.4em 0.8em;
     }
+}
+
+/* 行前準備卡片內容優化 */
+.info-card {
+    padding: 1rem;
+    font-size: var(--font-size-base);  /* 使用與活動內容相同的字體大小 */
+}
+
+.info-card h3 {
+    font-size: var(--font-size-md);    /* 與活動標題相同大小 */
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 0.5rem 0;
+    margin-bottom: 0.6rem;
+    border-bottom: 2px solid var(--border-color);
+    letter-spacing: 0.02em;
+}
+
+.info-card ul {
+    padding-left: 1.2rem;              /* 與活動列表相同的縮排 */
+}
+
+.info-card li {
+    position: relative;
+    padding-left: 0.8rem;
+    margin-bottom: 0.3rem;             /* 縮小項目間距 */
+    line-height: 1.4;                  /* 與活動內容相同的行高 */
+    color: var(--text-secondary);
+    font-size: calc(var(--font-size-base) * 0.95);
+}
+
+.info-card li::before {
+    content: '•';
+    position: absolute;
+    left: -0.8rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.info-card li br + * {
+    margin-top: 0.2em;                 /* 調整換行後的間距 */
+}
+
+/* 手機版優化 */
+@media (max-width: 768px) {
+    .info-card {
+        padding: 0.8rem;
+    }
+    
+    .info-card li {
+        padding-left: 0.6rem;
+        margin-bottom: 0.3rem;
+    }
+}
+
+/* 每日行程區塊整體優化 */
+.daily-plan {
+    margin-top: 2rem;
+}
+
+/* 每日行程標題優化 */
+.daily-plan h2 {
+    color: var(--primary-color);
+    font-size: var(--font-size-lg);
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.5rem;  /* 大幅減少與卡片的間距 */
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Day 卡片容器優化 */
+.day-cards {
+    margin-top: 0.5rem;  /* 減少與標題的間距 */
+}
+
+/* 手機版優化 */
+@media (max-width: 768px) {
+    .daily-plan h2 {
+        margin-bottom: 0.4rem;  /* 手機版更緊湊 */
+    }
+    
+    .day-cards {
+        margin-top: 0.4rem;
+    }
+    
+    .day-card {
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* 統一標題樣式（行前準備和每日行程） */
+.notice-section h2,
+.daily-plan h2 {
+    color: var(--primary-color);
+    font-size: var(--font-size-lg);
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* 統一內容容器間距 */
+.info-container,
+.day-cards {
+    margin-top: 0.5rem;
+}
+
+/* 手機版優化 */
+@media (max-width: 768px) {
+    .notice-section h2,
+    .daily-plan h2 {
+        margin-bottom: 0.4rem;
+    }
+    
+    .info-container,
+    .day-cards {
+        margin-top: 0.4rem;
+    }
+}
+
+/* 快速導航選擇器優化 */
+.day-selector select {
+    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: calc(var(--font-size-base) * 0.95);  /* 稍微縮小字體 */
+    color: var(--text-primary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-primary);
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+    letter-spacing: 0.02em;
+}
+
+/* 選項組樣式 */
+.day-selector optgroup {
+    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+    color: var(--primary-color);
+    background-color: var(--background-secondary);
+}
+
+/* 選項樣式 */
+.day-selector option {
+    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: normal;
+    color: var(--text-secondary);
+    background-color: var(--background-primary);
+    padding: 0.4rem;
+}
+
+/* 懸停效果 */
+.day-selector select:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 手機版優化 */
+@media (max-width: 768px) {
+    .day-selector select {
+        font-size: calc(var(--font-size-base) * 0.9);  /* 手機版更小的字體 */
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/* 確保頁面從頂部開始顯示 */
+html {
+    scroll-behavior: smooth;  /* 保持平滑滾動 */
+    scroll-padding-top: 0;   /* 重置滾動偏移 */
+}
+
+/* 修正導航欄定位 */
+.quick-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+}
+
+/* 確保頁面頂部元素正確顯示 */
+.page-header {
+    margin-top: 0;           /* 移除頂部間距 */
+    padding-top: 3rem;       /* 添加適當的頂部內邊距 */
+}
+
+/* 防止錨點跳轉時的位置偏移 */
+[id] {
+    scroll-margin-top: 60px; /* 為錨點添加滾動邊距 */
 }
