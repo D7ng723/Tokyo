@@ -1,176 +1,95 @@
-/* 基礎設置 */
+/* 更新主題色系和基礎設置 */
 :root {
-    /* 主題色系 */
-    --primary-color: #1a73e8;
-    --secondary-color: #4285f4;
-    --accent-color: #8ab4f8;
-    --text-primary: #202124;
-    --text-secondary: #5f6368;
-    --text-light: #757575;
-    --background-primary: #ffffff;
-    --background-secondary: #f8f9fa;
-    --border-color: #dadce0;
+    /* 更優雅的配色方案 */
+    --primary-color: #2563eb;      /* 主色調：深藍色 */
+    --secondary-color: #3b82f6;    /* 次要色：中藍色 */
+    --accent-color: #60a5fa;       /* 強調色：淺藍色 */
+    --text-primary: #1f2937;       /* 主要文字：深灰 */
+    --text-secondary: #4b5563;     /* 次要文字：中灰 */
+    --text-light: #6b7280;         /* 淺色文字 */
+    --background-primary: #ffffff;  /* 主背景：白色 */
+    --background-secondary: #f8f9fa; /* 次要背景：淺灰 */
+    --border-color: #e5e7eb;       /* 邊框色：淺灰 */
     
-    /* 字體大小 */
-    --font-size-xl: clamp(1.4rem, 4vw, 1.8rem);
-    --font-size-lg: clamp(1.2rem, 3.5vw, 1.5rem);
-    --font-size-md: clamp(1rem, 3vw, 1.2rem);
-    --font-size-base: clamp(0.9rem, 2.5vw, 1rem);
-    --font-size-sm: clamp(0.8rem, 2vw, 0.9rem);
-    
-    /* 間距 */
-    --spacing-xl: clamp(1.5rem, 5vw, 3rem);
-    --spacing-lg: clamp(1rem, 3vw, 2rem);
-    --spacing-md: clamp(0.8rem, 2vw, 1.2rem);
-    --spacing-sm: clamp(0.4rem, 1.5vw, 0.6rem);
-    --spacing-xs: clamp(0.2rem, 1vw, 0.4rem);
-    
-    /* 圓角 */
-    --radius-lg: 1rem;
-    --radius-md: 0.75rem;
-    --radius-sm: 0.5rem;
-    
-    /* 陰影 */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    /* 優化字體大小 */
+    --font-size-xl: clamp(1.5rem, 5vw, 2rem);
+    --font-size-lg: clamp(1.3rem, 4vw, 1.7rem);
+    --font-size-md: clamp(1.1rem, 3vw, 1.4rem);
+    --font-size-base: clamp(0.95rem, 2.5vw, 1.1rem);
+    --font-size-sm: clamp(0.85rem, 2vw, 0.95rem);
 }
 
-/* 基礎樣式重置 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* 全局排版設置 */
+/* 全局文字優化 */
 body {
     font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.5;
+    line-height: 1.6;
     color: var(--text-primary);
     background-color: var(--background-secondary);
-    font-size: var(--font-size-base);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.015em;
 }
 
-/* 標題樣式 */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    line-height: 1.3;
-    color: var(--text-primary);
-    margin-bottom: var(--spacing-sm);
-}
-
-h1 { font-size: var(--font-size-xl); }
-h2 { font-size: var(--font-size-lg); }
-h3 { font-size: var(--font-size-md); }
-
-/* 卡片樣式優化 */
+/* Day 卡片樣式優化 */
 .day-card {
     background: var(--background-primary);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    padding: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
     border: 1px solid var(--border-color);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
 .day-card:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* 時間軸美化 */
-.timeline {
-    position: relative;
-    padding-left: var(--spacing-lg);
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--accent-color);
-    opacity: 0.3;
-}
-
-.time-block {
-    position: relative;
-    margin-bottom: var(--spacing-sm);
-    padding-bottom: var(--spacing-xs);
-}
-
-.time-block::before {
-    content: '';
-    position: absolute;
-    left: calc(var(--spacing-lg) * -1 + 1px);
-    top: var(--spacing-xs);
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--primary-color);
-    border: 2px solid var(--background-primary);
-    box-shadow: var(--shadow-sm);
-}
-
-/* 活動內容樣式 */
-.activity {
-    background: var(--background-primary);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-sm);
-    margin-bottom: var(--spacing-xs);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-}
-
-.activity h4 {
-    font-size: calc(var(--font-size-base) * 1.25);  /* 從 1.15 增加到 1.25 */
-    font-weight: 600;
+/* Day 標題優化 */
+.day-card h3 {
+    font-size: var(--font-size-lg);
     color: var(--primary-color);
-    margin-bottom: 0.5em;
-    padding-bottom: 0.4em;
-    border-bottom: 1px solid var(--border-color);
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.2rem;
+    background: linear-gradient(to right, #f8f9fa, #ffffff);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 6px;
     letter-spacing: 0.02em;
 }
 
-/* 時間標籤樣式 */
-.time {
-    display: inline-block;
-    background: var(--primary-color);
-    color: white;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--radius-sm);
-    font-weight: 500;
-    font-size: var(--font-size-sm);
-    margin-bottom: var(--spacing-xs);
+/* 活動標題優化 */
+.activity h4 {
+    font-size: var(--font-size-md);
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 0.5rem 0;
+    margin-bottom: 0.8rem;
+    border-bottom: 2px solid var(--border-color);
+    letter-spacing: 0.02em;
 }
 
-/* 提示框樣式優化 - 移除符號 */
+/* 時間標籤美化 */
+.time {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.4em 0.8em;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 提示框優化 */
 .notice-warning,
 .notice-important,
 .notice-tips {
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--radius-sm);
-    margin: var(--spacing-xs) 0;
-    font-size: var(--font-size-sm);
-    line-height: 1.4;
-    padding-left: var(--spacing-sm); /* 移除額外的左邊距 */
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* 移除原本的符號 */
-.notice-warning::before,
-.notice-important::before,
-.notice-tips::before {
-    display: none; /* 隱藏符號 */
-}
-
-/* 保持提示框的樣式 */
 .notice-warning {
     background: #fff8e1;
     border-left: 4px solid #ffa000;
@@ -191,29 +110,30 @@ h3 { font-size: var(--font-size-md); }
 
 /* 列表樣式優化 */
 .activity ul {
-    list-style: none;
-    padding-left: var(--spacing-md);
+    padding-left: 1.2rem;
 }
 
 .activity li {
     position: relative;
-    margin-bottom: var(--spacing-xs);
-    padding-left: var(--spacing-sm);
-    line-height: 1.4;
+    padding-left: 0.8rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
 }
 
 .activity li::before {
     content: '•';
     position: absolute;
-    left: 0;
+    left: -0.8rem;
     color: var(--primary-color);
+    font-weight: bold;
 }
 
-/* 連結樣式 */
+/* 連結樣式優化 */
 a {
     color: var(--primary-color);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 a:hover {
@@ -221,431 +141,100 @@ a:hover {
     text-decoration: underline;
 }
 
+/* 時間軸優化 */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--accent-color);
+    opacity: 0.5;
+}
+
+.time-block::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
 /* 手機版優化 */
 @media (max-width: 768px) {
     .day-card {
-        padding: var(--spacing-md);
-    }
-    
-    .timeline {
-        padding-left: var(--spacing-md);
-    }
-    
-    .activity {
-        padding: calc(var(--spacing-sm) * 0.8);
-    }
-    
-    .time-block::before {
-        left: calc(var(--spacing-md) * -1 + 1px);
-    }
-    
-    .activity li {
-        padding-left: calc(var(--spacing-sm) * 0.8);
-        margin-bottom: calc(var(--spacing-xs) * 0.8);
-    }
-    
-    .time-block {
-        margin-bottom: calc(var(--spacing-sm) * 0.8);
+        padding: 1rem;
+        margin-bottom: 1rem;
     }
     
     .day-card h3 {
-        padding: calc(var(--spacing-sm) * 0.7);
-        margin-bottom: var(--spacing-sm);
+        padding: 0.6rem 0.8rem;
+        margin-bottom: 1rem;
     }
-}
-
-/* 特小螢幕優化 */
-@media (max-width: 320px) {
-    .day-card {
-        padding: var(--spacing-sm);
+    
+    .activity h4 {
+        font-size: calc(var(--font-size-md) * 0.95);
     }
     
     .timeline {
-        padding-left: var(--spacing-sm);
-    }
-    
-    .time-block::before {
-        left: calc(var(--spacing-sm) * -1 + 1px);
-    }
-    
-    .activity {
-        padding: calc(var(--spacing-xs) * 1.2);
-    }
-    
-    .activity li {
-        padding-left: var(--spacing-xs);
-        margin-bottom: calc(var(--spacing-xs) * 0.8);
-        font-size: calc(var(--font-size-sm) * 0.95);
+        padding-left: 1.5rem;
     }
     
     .notice-warning,
     .notice-important,
     .notice-tips {
-        padding: calc(var(--spacing-xs) * 0.8);
-        margin: calc(var(--spacing-xs) * 0.8) 0;
+        padding: 0.6rem 0.8rem;
     }
 }
 
-/* 基礎容器設置 */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-md);
-}
-
-/* 頁面標題區域優化 */
-.page-header {
-    position: relative;
-    min-height: clamp(200px, 30vh, 300px);
-    padding: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
-    z-index: 1;
-}
-
-.page-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-}
-
-/* 雪花效果容器優化 */
-.snow-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* 導航欄優化 */
-.quick-nav {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
-    padding: var(--spacing-xs) 0;
-}
-
-.nav-container {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: var(--spacing-sm);
-    overflow-x: auto;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-}
-
-/* 日期卡片優化 */
-.day-card {
-    position: relative;
-    overflow: hidden;
-    margin-bottom: var(--spacing-lg);
-}
-
-/* 時間軸優化 */
-.timeline {
-    position: relative;
-    padding-left: calc(var(--spacing-lg) + 10px);
-    margin-top: var(--spacing-md);
-}
-
-.time-block {
-    position: relative;
-    margin-bottom: var(--spacing-sm);
-    padding-bottom: var(--spacing-xs);
-}
-
-/* 活動內容區塊優化 */
-.activity {
-    position: relative;
-    background: var(--background-primary);
-    margin-left: var(--spacing-sm);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-}
-
-.activity h4 {
-    margin-bottom: var(--spacing-sm);
-    padding-bottom: var(--spacing-xs);
-    border-bottom: 1px solid var(--border-color);
-}
-
-/* 列表樣式優化 */
-.activity ul {
-    margin: var(--spacing-sm) 0;
-}
-
-.activity li {
-    margin-bottom: var(--spacing-xs);
-    padding-left: var(--spacing-md);
-}
-
-.activity li br {
-    margin-bottom: 0.2rem;
-    display: block;
-    content: "";
-}
-
-/* 提示框優化 */
-.notice-warning,
-.notice-important,
-.notice-tips {
-    clear: both;
-    margin: var(--spacing-xs) 0;
-}
-
-/* 手機版特別優化 */
-@media (max-width: 768px) {
-    .page-header {
-        min-height: 180px;
-        padding: var(--spacing-md);
-    }
-    
-    .nav-container {
-        padding: var(--spacing-xs);
-    }
-    
-    .timeline {
-        padding-left: var(--spacing-lg);
-    }
-    
-    .activity {
-        margin-left: 0;
-        padding: var(--spacing-sm);
-    }
-    
-    .activity li {
-        padding-left: var(--spacing-sm);
-    }
-}
-
-/* 特小螢幕優化 */
-@media (max-width: 320px) {
-    .page-header {
-        min-height: 150px;
-    }
-    
-    .timeline {
-        padding-left: var(--spacing-md);
-    }
-    
-    .activity {
-        padding: var(--spacing-xs);
-    }
-    
-    .activity li {
-        font-size: calc(var(--font-size-sm) - 1px);
-    }
-}
-
-/* 修復重疊問題 */
-.time {
-    display: inline-block;
-    margin-bottom: var(--spacing-xs);
-    clear: both;
-}
-
-.activity p {
-    clear: both;
-    margin-bottom: var(--spacing-sm);
-}
-
-/* 優化圖文排版 */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: var(--spacing-sm) 0;
-}
-
-/* 優化連結樣式 */
-.activity a {
-    display: inline-block;
-    margin-left: var(--spacing-xs);
-}
-
-/* 每日行程標題樣式優化 */
-.day-card h3 {
-    font-size: var(--font-size-lg);
-    color: var(--primary-color);
-    padding: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
-    background: #f8f9fa;
-    border-radius: var(--radius-sm);
-    border-left: 4px solid var(--primary-color);
-    line-height: 1.2; /* 減少行高 */
-    margin-top: 0; /* 移除上方間距 */
-}
-
-/* 時間軸容器調整 */
-.timeline {
-    position: relative;
-    padding-left: var(--spacing-lg);
-    margin-top: var(--spacing-sm); /* 減少與標題的間距 */
-}
-
-/* 手機版優化 */
-@media (max-width: 768px) {
-    .day-card h3 {
-        padding: calc(var(--spacing-sm) * 0.8);
-        margin-bottom: var(--spacing-sm);
-        font-size: calc(var(--font-size-lg) * 0.9);
-    }
-}
-
-/* 優化文字排版 */
-p, li {
-    margin-bottom: 0.4em;
-}
-
-/* 優化標題下方間距 */
-h4 {
-    margin-bottom: 0.4em;
-}
-
-/* 調整行前準備和每日行程標題的字體大小 */
-.notice-section h2,
-.daily-plan h2 {
-    font-size: clamp(1.5rem, 4vw, 1.8rem); /* 調小字體大小 */
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-sm);
-    padding-bottom: var(--spacing-sm);
-    border-bottom: 2px solid var(--primary-color);
-}
-
-/* 手機版標題大小調整 */
-@media (max-width: 768px) {
-    .notice-section h2,
-    .daily-plan h2 {
-        font-size: clamp(1.3rem, 3.5vw, 1.5rem); /* 手機版再稍微縮小 */
-    }
-}
-
-/* 美化版權聲明樣式 */
+/* 版權聲明樣式優化 */
 .copyright {
-    text-align: center; /* 置中 */
-    font-size: var(--font-size-sm); /* 使用小字體 */
-    color: var(--text-secondary); /* 使用次要文字顏色 */
-    margin: var(--spacing-lg) 0; /* 增加上下間距 */
-    padding: var(--spacing-xs); /* 增加內邊距 */
-    background-color: var(--background-secondary); /* 背景顏色 */
-    border-top: 1px solid var(--border-color); /* 上邊框 */
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    margin-top: var(--spacing-xl);
+    background: linear-gradient(to right, transparent, var(--background-secondary), transparent);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    border-top: 1px solid var(--border-color);
+}
+
+.copyright p {
+    margin: 0;
+    padding: 0.5em 1em;
+    display: inline-block;
+    background-color: var(--background-primary);
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.copyright p:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 手機版優化 */
 @media (max-width: 768px) {
     .copyright {
-        font-size: calc(var(--font-size-sm) * 0.9); /* 手機版稍微縮小字體 */
-    }
-}
-
-/* 調整每日行程標題和卡片的間距 */
-.daily-plan h2 {
-    margin-bottom: var(--spacing-xs);    /* 減少標題與內容的間距 */
-    margin-top: var(--spacing-xl);       /* 保持與上方的間距 */
-    padding-bottom: var(--spacing-sm);
-    border-bottom: 2px solid var(--primary-color);
-}
-
-/* 調整卡片容器的間距 */
-.day-cards {
-    margin-top: var(--spacing-xs);       /* 減少與標題的間距 */
-}
-
-/* 手機版優化 */
-@media (max-width: 768px) {
-    .daily-plan h2 {
-        margin-bottom: calc(var(--spacing-xs) * 0.8);  /* 手機版保持適當比例 */
-        margin-top: calc(var(--spacing-xl) * 0.8);
+        padding: var(--spacing-md) 0;
+        margin-top: var(--spacing-lg);
     }
     
-    .day-cards {
-        margin-top: calc(var(--spacing-xs) * 0.8);     /* 手機版保持適當比例 */
-    }
-}
-
-/* 行前準備區域的優化 */
-.info-container {
-    display: grid;
-    gap: var(--spacing-sm);  /* 減少卡片之間的間距 */
-}
-
-.info-card {
-    padding: var(--spacing-sm);  /* 減少內部間距 */
-    font-size: calc(var(--font-size-base) * 0.95);  /* 稍微縮小字體 */
-}
-
-.info-card h3 {
-    font-size: var(--font-size-base);  /* 縮小標題字體 */
-    margin-bottom: var(--spacing-xs);  /* 減少標題下方間距 */
-    color: var(--primary-color);
-}
-
-.info-card ul {
-    padding-left: var(--spacing-md);  /* 縮小列表縮排 */
-}
-
-.info-card li {
-    margin-bottom: var(--spacing-xs);  /* 減少列表項目間距 */
-    line-height: 1.4;  /* 縮小行高 */
-}
-
-.info-card li br {
-    margin-bottom: 0.15rem;  /* 減少換行間距 */
-}
-
-/* 手機版特別優化 */
-@media (max-width: 768px) {
-    .info-card {
-        padding: calc(var(--spacing-sm) * 0.8);  /* 進一步縮小內部間距 */
-        font-size: calc(var(--font-size-base) * 0.9);  /* 手機版更小的字體 */
-    }
-    
-    .info-card li {
-        padding-left: calc(var(--spacing-sm) * 0.8);  /* 縮小縮排 */
-        margin-bottom: calc(var(--spacing-xs) * 0.8);  /* 縮小間距 */
-    }
-}
-
-/* 特小螢幕進一步優化 */
-@media (max-width: 320px) {
-    .info-card {
-        padding: var(--spacing-xs);  /* 最小的內部間距 */
-        font-size: calc(var(--font-size-sm) * 1.05);  /* 更小的字體 */
-    }
-    
-    .info-card li {
-        padding-left: var(--spacing-xs);  /* 最小的縮排 */
-        margin-bottom: calc(var(--spacing-xs) * 0.7);  /* 最小的間距 */
-    }
-}
-
-/* 手機版標題優化 */
-@media (max-width: 768px) {
-    .activity h4 {
-        font-size: calc(var(--font-size-base) * 1.2);  /* 從 1.1 增加到 1.2 */
-        margin-bottom: 0.4em;
-        padding-bottom: 0.3em;
-    }
-}
-
-/* 特小螢幕優化 */
-@media (max-width: 320px) {
-    .activity h4 {
-        font-size: calc(var(--font-size-base) * 1.15);  /* 從 1.05 增加到 1.15 */
-        margin-bottom: 0.3em;
+    .copyright p {
+        font-size: calc(var(--font-size-sm) * 0.95);
+        padding: 0.4em 0.8em;
     }
 }
