@@ -475,75 +475,65 @@ h4 {
 
 /* 優化選項組和選項樣式 */
 .day-selector select optgroup {
-    font-size: 1.1rem;
-    font-weight: 600;
-    background-color: #f8f9fa;
-    padding: 0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    background-color: #f0f4f8;
+    padding: 0.8rem 0.5rem;
+    color: #1a365d;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .day-selector select option {
-    font-size: 1rem;
+    font-size: 0.95rem;
     padding: 0.8rem 1rem;
     background-color: white;
-    color: #333;
+    color: #2d3748;
+    font-weight: 400;
 }
 
 /* 手機版特別優化 */
 @media screen and (max-width: 768px) {
     .day-selector select {
-        font-size: 16px; /* 避免iOS自動縮放 */
+        font-size: 16px;
         padding: 0.8rem 1rem;
         margin: 0.3rem 0;
-        width: 280px; /* 固定寬度 */
+        width: 300px;
     }
 
     .day-selector select optgroup {
-        font-size: 16px;
-        padding: 0.8rem 0;
+        font-size: 18px;  /* Day標題更大 */
+        font-weight: 700;
+        padding: 1rem 0.5rem;
+        background-color: #f0f4f8;
+        color: #1a365d;
     }
 
     .day-selector select option {
-        font-size: 15px;
-        padding: 1rem;
-        line-height: 1.5;
+        font-size: 14px;  /* 子選項更小 */
+        padding: 0.8rem 1.2rem;  /* 增加左邊距，形成層級感 */
+        line-height: 1.6;
+        color: #4a5568;
     }
 
-    /* 改善選項的可點擊區域 */
-    .day-selector select option,
-    .day-selector select optgroup {
-        min-height: 44px; /* iOS建議的最小可點擊高度 */
-    }
-
-    /* 優化下拉箭頭 */
-    .day-selector select {
-        background-position: right 0.8rem center;
-        background-size: 1.2em;
-        padding-right: 2.5rem;
-    }
-}
-
-/* 深色模式支援 */
-@media (prefers-color-scheme: dark) {
-    .day-selector select {
-        background-color: white;
-        color: #333;
-    }
-    
-    .day-selector select optgroup {
-        background-color: #f8f9fa;
-    }
-    
+    /* 改善選項的可點擊區域和視覺層級 */
     .day-selector select option {
-        background-color: white;
+        min-height: 40px;
+        padding-left: 1.5rem;  /* 子選項縮進 */
     }
 }
 
 /* 特小螢幕的額外優化 */
 @media screen and (max-width: 320px) {
     .day-selector select {
-        width: 260px;
-        font-size: 15px;
-        padding: 0.7rem 0.9rem;
+        width: 280px;
+    }
+
+    .day-selector select optgroup {
+        font-size: 17px;  /* 稍微調小一點 */
+    }
+
+    .day-selector select option {
+        font-size: 13px;
     }
 }
 
