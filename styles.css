@@ -1485,18 +1485,43 @@ main {
     }
 
     .nav-container {
-        display: flex;
-        flex-direction: row;
+        display: grid; /* 改為網格布局 */
+        grid-template-columns: auto auto; /* 兩列布局 */
         justify-content: center;
         align-items: center;
         gap: 0.8rem;
         padding: 0 0.5rem;
-        overflow-x: visible;
         width: 100%;
     }
 
+    .nav-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.4rem 0.8rem;
+        background: white;
+        border-radius: 20px;
+        border: 1px solid #e0e0e0;
+        white-space: nowrap;
+        font-size: 0.9rem;
+        min-height: 36px;
+    }
+
+    .day-selector {
+        grid-column: 1 / -1; /* 讓選擇器占據整行 */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .day-selector select {
+        width: min(90vw, 300px);
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
     main {
-        margin-top: 70px;
+        margin-top: 110px; /* 增加上邊距以適應兩行導航 */
     }
 }
 
@@ -1507,7 +1532,16 @@ main {
         padding: 0 0.3rem;
     }
 
+    .nav-item {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    .day-selector select {
+        width: min(95vw, 280px);
+    }
+
     main {
-        margin-top: 65px;
+        margin-top: 105px;
     }
 } 
