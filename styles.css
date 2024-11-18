@@ -16,19 +16,20 @@
     --tablet-padding: 2rem;
     --desktop-padding: 3rem;
     --section-background: #ffffff;
-    --font-size-xl: clamp(1.8rem, 5vw, 2.5rem);    /* 大標題 */
-    --font-size-lg: clamp(1.2rem, 4vw, 1.8rem);  /* 次標題 */
-    --font-size-md: clamp(1rem, 3vw, 1.2rem);    /* 正文 */
-    --font-size-sm: clamp(0.875rem, 2.5vw, 1rem);  /* 小字 */
-    --line-height-loose: 1.8;                       /* 寬鬆行高 */
-    --line-height-tight: 1.5;                       /* 緊湊行高 */
-    --spacing-xl: clamp(2rem, 5vw, 3rem);
-    --spacing-lg: clamp(1.5rem, 4vw, 2rem);
-    --spacing-md: clamp(1rem, 3vw, 1.5rem);
-    --spacing-sm: clamp(0.5rem, 2vw, 1rem);
-    --border-radius-lg: clamp(8px, 2vw, 12px);
-    --border-radius-md: clamp(6px, 1.5vw, 8px);
-    --border-radius-sm: clamp(4px, 1vw, 6px);
+    --font-size-xl: clamp(1.5rem, 3vw, 2.2rem);    /* 大標題更合理的範圍 */
+    --font-size-lg: clamp(1.1rem, 2.5vw, 1.6rem);  /* 次標題 */
+    --font-size-md: clamp(0.9rem, 2vw, 1.1rem);    /* 正文 */
+    --font-size-sm: clamp(0.8rem, 1.8vw, 0.9rem);  /* 小字 */
+    --line-height-loose: clamp(1.4, 2vw, 1.6);                       /* 寬鬆行高 */
+    --line-height-tight: clamp(1.2, 1.5vw, 1.3);                       /* 緊湊行高 */
+    --spacing-xl: clamp(1.5rem, 3vw, 2rem);
+    --spacing-lg: clamp(1rem, 2vw, 1.5rem);
+    --spacing-md: clamp(0.4rem, 1.5vw, 0.6rem);
+    --spacing-sm: clamp(0.3rem, 1vw, 0.4rem);
+    --spacing-xs: clamp(0.2rem, 0.8vw, 0.3rem);
+    --border-radius-lg: clamp(6px, 1.5vw, 10px);
+    --border-radius-md: clamp(4px, 1vw, 8px);
+    --border-radius-sm: clamp(3px, 0.8vw, 6px);
 }
 
 * {
@@ -48,11 +49,11 @@ html {
 
 body {
     font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', '微軟正黑體', sans-serif;
-    line-height: 1.5;
+    line-height: var(--line-height-normal);
     color: var(--text-primary);
     background-color: var(--background-color);
     letter-spacing: 0.3px;
-    font-size: clamp(14px, 2.5vw, 16px);
+    font-size: clamp(14px, 2vw, 16px);
 }
 
 /* 標題樣式優化 */
@@ -746,9 +747,9 @@ h4 {
     }
 } 
 
-/* 添加或修改以下CSS */
+/* 添加或修改以CSS */
 
-/* 基礎響應式設置 */
+/* 基礎響應設置 */
 :root {
     --mobile-padding: 1rem;
     --tablet-padding: 2rem;
@@ -757,10 +758,9 @@ h4 {
 
 /* 頁面容器 */
 main {
-    margin-top: 85px;
+    margin: 0 auto;
     padding: 0 var(--desktop-padding);
     max-width: 100%;
-    margin: 0 auto;
 }
 
 /* 頁面標題響應式 */
@@ -1181,7 +1181,7 @@ main {
     text-align: center;
 }
 
-/* 活動內容樣式 */
+/* 活動內容樣 */
 .activity {
     padding: 0.8rem;
     background: #ffffff;
@@ -1597,31 +1597,37 @@ main {
 /* 根元素自適應設置 */
 :root {
     /* 自適應字體大小 */
-    --font-size-xl: clamp(1.8rem, 5vw, 2.5rem);     /* 大標題 */
-    --font-size-lg: clamp(1.2rem, 4vw, 1.8rem);     /* 次標題 */
-    --font-size-md: clamp(1rem, 3vw, 1.2rem);       /* 正文 */
-    --font-size-sm: clamp(0.875rem, 2.5vw, 1rem);   /* 小字 */
+    --font-size-xl: clamp(1.5rem, 3vw, 2.2rem);     /* 大標題更合理的範圍 */
+    --font-size-lg: clamp(1.1rem, 2.5vw, 1.6rem);     /* 次標題 */
+    --font-size-md: clamp(0.9rem, 2vw, 1.1rem);     /* 正文 */
+    --font-size-sm: clamp(0.8rem, 1.8vw, 0.9rem);   /* 小字 */
     
     /* 自適應間距 */
-    --spacing-xl: clamp(2rem, 5vw, 3rem);
-    --spacing-lg: clamp(1.5rem, 4vw, 2rem);
-    --spacing-md: clamp(1rem, 3vw, 1.5rem);
-    --spacing-sm: clamp(0.5rem, 2vw, 1rem);
+    --spacing-xl: clamp(1.5rem, 3vw, 2rem);
+    --spacing-lg: clamp(1rem, 2vw, 1.5rem);
+    --spacing-md: clamp(0.4rem, 1.5vw, 0.6rem);
+    --spacing-sm: clamp(0.3rem, 1vw, 0.4rem);
+    --spacing-xs: clamp(0.2rem, 0.8vw, 0.3rem);
     
-    /* 自適應容器寬度 */
-    --container-width: min(90%, 1200px);
-    --card-padding: clamp(0.8rem, 3vw, 1.2rem);
+    /* 自適應容器寬度和內邊距 */
+    --container-width: min(95%, 1200px);
+    --card-padding: clamp(0.4rem, 2vw, 0.8rem);
     
-    /* 自適應邊框 */
-    --border-radius-lg: clamp(8px, 2vw, 12px);
-    --border-radius-md: clamp(6px, 1.5vw, 8px);
-    --border-radius-sm: clamp(4px, 1vw, 6px);
+    /* 自適應邊框圓角 */
+    --border-radius-lg: clamp(6px, 1.5vw, 10px);
+    --border-radius-md: clamp(4px, 1vw, 8px);
+    --border-radius-sm: clamp(3px, 0.8vw, 6px);
+    
+    /* 自適應行高 */
+    --line-height-loose: clamp(1.4, 2vw, 1.6);
+    --line-height-normal: clamp(1.3, 1.8vw, 1.4);
+    --line-height-tight: clamp(1.2, 1.5vw, 1.3);
 }
 
 /* 基礎元素自適應 */
 body {
-    font-size: clamp(14px, 2.5vw, 16px);
-    line-height: 1.5;
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: var(--line-height-normal);
     letter-spacing: 0.3px;
 }
 
@@ -1720,7 +1726,7 @@ h3 {
 @media screen and (max-width: 320px) {
     :root {
         /* 進一步縮小間距 */
-        --card-padding: clamp(0.6rem, 2vw, 0.8rem);
+        --card-padding: clamp(0.3rem, 1.5vw, 0.6rem);
     }
     
     /* 調整導航項目 */
@@ -1752,4 +1758,123 @@ input, select, textarea {
     font-size: var(--font-size-sm);
     padding: clamp(0.3rem, 1vw, 0.5rem);
     border-radius: var(--border-radius-sm);
+}
+
+/* 卡片內容優化 */
+.info-card {
+    padding: 0.6rem;
+}
+
+.info-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.2rem;
+    line-height: var(--line-height-tight);
+}
+
+.info-card li {
+    font-size: 0.9rem;
+    line-height: var(--line-height-tight);
+    padding: var(--spacing-xs) 0;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 活動內容優化 */
+.activity {
+    padding: 0.6rem;
+}
+
+.activity h4 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: var(--line-height-tight);
+}
+
+.activity p {
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-xs);
+    line-height: var(--line-height-normal);
+}
+
+.activity ul {
+    margin: var(--spacing-xs) 0;
+    padding-left: 1rem;
+}
+
+.activity li {
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-xs);
+    line-height: var(--line-height-normal);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 時間軸優化 */
+.time-block {
+    margin-bottom: var(--spacing-md);
+    gap: var(--spacing-sm);
+}
+
+.time {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.4rem;
+    line-height: var(--line-height-tight);
+}
+
+/* 提示框優化 */
+.notice-important,
+.notice-warning,
+.notice-tips,
+.notice-cost {
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: var(--spacing-xs) 0;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    border-radius: var(--border-radius-sm);
+}
+
+/* 手機版特別優化 */
+@media screen and (max-width: 768px) {
+    .info-container {
+        gap: var(--spacing-sm);
+    }
+    
+    .day-card {
+        padding: 0.6rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .day-card h3 {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.6rem;
+        margin-bottom: 0.4rem;
+        line-height: var(--line-height-tight);
+    }
+    
+    .timeline {
+        padding-left: var(--spacing-md);
+    }
+}
+
+/* 特小螢幕的額外優化 */
+@media screen and (max-width: 320px) {
+    .info-card,
+    .activity {
+        padding: 0.4rem;
+    }
+    
+    .info-card h3,
+    .activity h4 {
+        font-size: 0.95rem;
+    }
+    
+    .info-card li,
+    .activity li,
+    .activity p {
+        font-size: 0.85rem;
+    }
 }
