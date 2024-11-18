@@ -438,3 +438,142 @@ html {
 [id] {
     scroll-margin-top: 60px; /* 為錨點添加滾動邊距 */
 }
+
+/* 基礎自適應設置 */
+:root {
+    /* 容器寬度 */
+    --container-max-width: min(95%, 1200px);
+    
+    /* 響應式間距 */
+    --spacing-base: clamp(0.5rem, 2vw, 1rem);
+    
+    /* 響應式字體大小 */
+    --font-size-xl: clamp(1.2rem, 3vw, 1.6rem);    /* 大標題 */
+    --font-size-lg: clamp(1.1rem, 2.5vw, 1.4rem);  /* 次標題 */
+    --font-size-md: clamp(1rem, 2vw, 1.2rem);      /* 小標題 */
+    --font-size-base: clamp(0.85rem, 1.8vw, 1rem); /* 正文 */
+    --font-size-sm: clamp(0.8rem, 1.6vw, 0.9rem);  /* 小字 */
+    
+    /* 響應式圓角 */
+    --border-radius: clamp(8px, 1.5vw, 12px);
+}
+
+/* 容器自適應 */
+.container, main {
+    width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-base);
+}
+
+/* 導航欄自適應 */
+.quick-nav {
+    padding: calc(var(--spacing-base) * 0.5);
+}
+
+.nav-container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    display: flex;
+    gap: calc(var(--spacing-base) * 0.8);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+/* 選擇器自適應 */
+.day-selector select {
+    width: clamp(200px, 50vw, 300px);
+    padding: calc(var(--spacing-base) * 0.4) calc(var(--spacing-base) * 0.8);
+    font-size: var(--font-size-base);
+}
+
+/* 卡片自適應 */
+.info-card, .day-card {
+    padding: calc(var(--spacing-base) * 1.2);
+    border-radius: var(--border-radius);
+    margin-bottom: calc(var(--spacing-base) * 1.2);
+}
+
+/* 標題自適應 */
+.notice-section h2,
+.daily-plan h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: calc(var(--spacing-base) * 0.8);
+}
+
+.day-card h3 {
+    font-size: var(--font-size-lg);
+    padding: calc(var(--spacing-base) * 0.8);
+}
+
+.activity h4 {
+    font-size: var(--font-size-md);
+    margin-bottom: calc(var(--spacing-base) * 0.6);
+}
+
+/* 列表自適應 */
+.activity ul,
+.info-card ul {
+    padding-left: calc(var(--spacing-base) * 1.5);
+}
+
+.activity li,
+.info-card li {
+    font-size: var(--font-size-base);
+    margin-bottom: calc(var(--spacing-base) * 0.4);
+    line-height: 1.5;
+}
+
+/* 提示框自適應 */
+.notice-warning,
+.notice-important,
+.notice-tips {
+    padding: calc(var(--spacing-base) * 0.8);
+    margin: calc(var(--spacing-base) * 0.6) 0;
+    border-radius: calc(var(--border-radius) * 0.8);
+    font-size: var(--font-size-base);
+}
+
+/* 時間軸自適應 */
+.timeline {
+    padding-left: clamp(1.5rem, 4vw, 2rem);
+}
+
+.time {
+    font-size: var(--font-size-sm);
+    padding: calc(var(--spacing-base) * 0.3) calc(var(--spacing-base) * 0.6);
+}
+
+/* 平板優化 */
+@media (max-width: 1024px) {
+    .info-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+/* 手機版優化 */
+@media (max-width: 768px) {
+    .info-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline {
+        padding-left: clamp(1rem, 3vw, 1.5rem);
+    }
+    
+    .activity li br + *,
+    .info-card li br + * {
+        margin-top: calc(var(--spacing-base) * 0.2);
+    }
+}
+
+/* 特小螢幕優化 */
+@media (max-width: 320px) {
+    :root {
+        --spacing-base: clamp(0.4rem, 1.5vw, 0.8rem);
+    }
+    
+    .day-selector select {
+        width: clamp(180px, 45vw, 250px);
+    }
+}
