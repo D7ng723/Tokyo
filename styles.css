@@ -16,12 +16,20 @@
     --tablet-padding: 2rem;
     --desktop-padding: 3rem;
     --section-background: #ffffff;
-    --font-size-xl: clamp(1.5rem, 3vw, 2.5rem);    /* 大標題，更合理的範圍 */
-    --font-size-lg: clamp(1.1rem, 2.5vw, 1.6rem);  /* 次標題，稍微縮小 */
-    --font-size-md: clamp(0.9rem, 2vw, 1.2rem);    /* 正文，更適合手機閱讀 */
-    --font-size-sm: clamp(0.8rem, 1.8vw, 1rem);    /* 小字，確保最小可讀性 */
-    --line-height-loose: 1.8;                       /* 寬鬆行高 */
-    --line-height-tight: 1.5;                       /* 緊湊行高 */
+    --font-size-xl: clamp(1.5rem, 3vw, 2.2rem);    /* 大標題更合理的範圍 */
+    --font-size-lg: clamp(1.1rem, 2.5vw, 1.6rem);  /* 次標題 */
+    --font-size-md: clamp(0.9rem, 2vw, 1.1rem);    /* 正文 */
+    --font-size-sm: clamp(0.8rem, 1.8vw, 0.9rem);  /* 小字 */
+    --line-height-loose: clamp(1.4, 2vw, 1.6);                       /* 寬鬆行高 */
+    --line-height-tight: clamp(1.2, 1.5vw, 1.3);                       /* 緊湊行高 */
+    --spacing-xl: clamp(1.5rem, 3vw, 2rem);
+    --spacing-lg: clamp(1rem, 2vw, 1.5rem);
+    --spacing-md: clamp(0.4rem, 1.5vw, 0.6rem);
+    --spacing-sm: clamp(0.3rem, 1vw, 0.4rem);
+    --spacing-xs: clamp(0.2rem, 0.8vw, 0.3rem);
+    --border-radius-lg: clamp(6px, 1.5vw, 10px);
+    --border-radius-md: clamp(4px, 1vw, 8px);
+    --border-radius-sm: clamp(3px, 0.8vw, 6px);
 }
 
 * {
@@ -41,10 +49,11 @@ html {
 
 body {
     font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', '微軟正黑體', sans-serif;
-    line-height: 1.5;
+    line-height: var(--line-height-normal);
     color: var(--text-primary);
     background-color: var(--background-color);
     letter-spacing: 0.3px;
+    font-size: clamp(14px, 2vw, 16px);
 }
 
 /* 標題樣式優化 */
@@ -394,41 +403,38 @@ h4 {
     line-height: var(--line-height-tight);
 }
 
-/* 快速導航樣式優化 */
+/* 優化快速導航樣式 */
 .quick-nav {
-    display: flex;
-    justify-content: center;
-    padding: 0.3rem;
-    background: linear-gradient(to right, #E3F2FD, #BBDEFB, #E3F2FD); /* 漸層背景 */
-    color: #1a1a1a;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    width: 100%;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding: 0.3rem 0;
+    background: linear-gradient(to right, #E3F2FD, #BBDEFB, #E3F2FD);
 }
 
 .nav-container {
     display: flex;
-    gap: 0.5rem;
+    flex-direction: row;
     align-items: center;
-    max-width: var(--container-width);
-    margin: 0 auto;
-    flex-wrap: nowrap;
-    padding: 0 1rem;
+    justify-content: flex-start;
+    gap: 0.3rem;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
 }
 
 .nav-item {
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    white-space: nowrap;
-    padding: 0.35rem 0.8rem;
-    background: white; /* 改為純白背景 */
+    padding: 0.3rem 0.8rem;
+    background: white;
     border-radius: 20px;
     transition: all 0.2s ease;
     border: 1px solid #e0e0e0;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .nav-item:hover {
@@ -453,83 +459,100 @@ h4 {
 
 /* 下拉選單樣式優化 */
 .day-selector select {
-    padding: 0.35rem 0.8rem;
+    width: auto;
+    min-width: 150px;
+    max-width: none;
+    padding: 0.3rem 0.6rem;
     border-radius: 20px;
-    border: 1px solid #e0e0e0;
-    background-color: white; /* 改為純白背景 */
+    border: 1px solid var(--border-color);
+    background-color: white;
     font-size: 0.9rem;
     cursor: pointer;
     outline: none;
-    transition: all 0.2s ease;
-    color: #2c3e50;
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 0.5rem center;
-    background-size: 1em;
-    padding-right: 2.5rem;
+    transition: all 0.3s ease;
 }
 
-.day-selector select:hover {
-    background-color: white;
-    border-color: #90CAF9;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+.day-selector select optgroup {
+    font-size: clamp(16px, 4vw, 18px);  /* Day標題自適應大小 */
+    font-weight: 700;
+    padding: 1rem 0.5rem;
+    background-color: #f0f4f8;
+    color: #1a365d;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.day-selector select option {
+    font-size: clamp(13px, 3.2vw, 14px);  /* 子選項自適應大小 */
+    padding: 0.8rem 1.2rem;
+    line-height: 1.6;
+    color: #4a5568;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* 手機版特別優化 */
 @media screen and (max-width: 768px) {
-    .quick-nav {
-        padding: 0.25rem 0;
-    }
-    
-    .nav-container {
-        gap: 0.4rem;
-        padding: 0 0.5rem;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-    
-    .nav-container::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .nav-item {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.85rem;
-    }
-    
-    .nav-item .icon {
-        font-size: 0.9rem;
-    }
-    
     .day-selector select {
+        width: auto;
+        min-width: 150px;
+        max-width: none;
         padding: 0.3rem 0.6rem;
-        padding-right: 2rem;
-        font-size: 0.85rem;
-        background-size: 0.8em;
+    }
+
+    .nav-container {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 0.3rem;
+        padding: 0 0.3rem;
+    }
+
+    .quick-nav {
+        padding: 0.3rem 0;
+    }
+
+    .nav-item {
+        flex: 0 0 auto;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .day-selector {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .day-selector select {
+        width: 100%;
+        min-width: 0;
+        padding: 0.3rem 0.6rem;
+    }
+
+    main {
+        margin-top: 45px;
+    }
+
+    .notice-section {
+        margin-top: 0;
+        padding-top: 0;
     }
 }
 
-/* 深色模式支援 */
-@media (prefers-color-scheme: dark) {
-    .quick-nav {
-        background: #1a237e; /* 深色模式使用純色背景 */
+/* 特小螢幕的額外優化 */
+@media screen and (max-width: 320px) {
+    .nav-container {
+        gap: 0.2rem;
+        padding: 0 0.2rem;
     }
-    
+
     .nav-item {
-        background: white; /* 保持白色背景 */
-        border-color: #e0e0e0;
+        padding: 0.2rem 0.4rem;
+        font-size: 0.85rem;
     }
-    
-    .nav-item a {
-        color: #2c3e50;
-    }
-    
-    .day-selector select {
-        background-color: white; /* 保持白色背景 */
-        color: #2c3e50;
-        border-color: #e0e0e0;
+
+    main {
+        margin-top: 42px;
     }
 }
 
@@ -637,8 +660,8 @@ h4 {
 
 /* 修改行前準備區塊的樣式 */
 .notice-section {
-    margin-top: 0.1rem;
-    padding-top: 0.1rem;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .info-container {
@@ -724,9 +747,9 @@ h4 {
     }
 } 
 
-/* 添加或修改以下CSS */
+/* 添加或修改以CSS */
 
-/* 基礎響應式設置 */
+/* 基礎響應設置 */
 :root {
     --mobile-padding: 1rem;
     --tablet-padding: 2rem;
@@ -735,9 +758,9 @@ h4 {
 
 /* 頁面容器 */
 main {
-    padding: 1rem var(--desktop-padding);
-    max-width: 100%;
     margin: 0 auto;
+    padding: 0 var(--desktop-padding);
+    max-width: 100%;
 }
 
 /* 頁面標題響應式 */
@@ -1056,7 +1079,7 @@ main {
 
 /* 添加資訊類型圖標 */
 .info-transport::before { content: '🚇'; }
-.info-cost::before { content: '💴'; }
+.info-cost::before { content: '💰'; }
 .info-time::before { content: '⏰'; }
 .info-location::before { content: '📍'; }
 .info-tips::before { content: '💡'; }
@@ -1158,7 +1181,7 @@ main {
     text-align: center;
 }
 
-/* 活動內容樣式 */
+/* 活動內容樣 */
 .activity {
     padding: 0.8rem;
     background: #ffffff;
@@ -1447,3 +1470,411 @@ main {
         padding: 0.2rem 0.4rem;
     }
 } 
+
+/* 優化快速導航樣式 */
+.quick-nav {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    background: linear-gradient(to right, #E3F2FD, #BBDEFB, #E3F2FD);
+    color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.8rem;
+    background: white;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+    border: 1px solid #e0e0e0;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* 手機版特別優化 */
+@media screen and (max-width: 768px) {
+    .quick-nav {
+        padding: 0.5rem 0;
+        background: rgba(227, 242, 253, 0.95);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+
+    .nav-container {
+        display: flex;  /* 改回 flex 布局 */
+        flex-direction: column;  /* 改為垂直排列 */
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.3rem;
+        width: 100%;
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.4rem 0.8rem;
+        background: white;
+        border-radius: 20px;
+        border: 1px solid #e0e0e0;
+        white-space: nowrap;
+        font-size: 0.9rem;
+        min-height: 36px;
+        width: auto;  /* 讓寬度自適應內容 */
+    }
+
+    .day-selector {
+        width: 90%;  /* 控制選擇器寬度 */
+        max-width: 300px;
+    }
+
+    .day-selector select {
+        width: 100%;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+        border-radius: 20px;
+    }
+
+    main {
+        margin-top: 120px;  /* 調整主內容區域的上邊距 */
+    }
+
+    /* 修改行前準備標題間距 */
+    .notice-section {
+        margin-top: -0.5rem;  /* 進一步減少間距 */
+    }
+}
+
+/* 特小螢幕的額外優化 */
+@media screen and (max-width: 320px) {
+    .nav-container {
+        gap: 0.4rem;
+        padding: 0.2rem;
+    }
+
+    .nav-item {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    .day-selector select {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    main {
+        margin-top: 115px;
+    }
+} 
+
+/* 根元素自適應設置 */
+:root {
+    /* 自適應字體大小 */
+    --font-size-xl: clamp(1.5rem, 3vw, 2.2rem);     /* 大標題更合理的範圍 */
+    --font-size-lg: clamp(1.1rem, 2.5vw, 1.6rem);     /* 次標題 */
+    --font-size-md: clamp(0.9rem, 2vw, 1.1rem);     /* 正文 */
+    --font-size-sm: clamp(0.8rem, 1.8vw, 0.9rem);   /* 小字 */
+    
+    /* 自適應間距 */
+    --spacing-xl: clamp(1.5rem, 3vw, 2rem);
+    --spacing-lg: clamp(1rem, 2vw, 1.5rem);
+    --spacing-md: clamp(0.4rem, 1.5vw, 0.6rem);
+    --spacing-sm: clamp(0.3rem, 1vw, 0.4rem);
+    --spacing-xs: clamp(0.2rem, 0.8vw, 0.3rem);
+    
+    /* 自適應容器寬度和內邊距 */
+    --container-width: min(95%, 1200px);
+    --card-padding: clamp(0.4rem, 2vw, 0.8rem);
+    
+    /* 自適應邊框圓角 */
+    --border-radius-lg: clamp(6px, 1.5vw, 10px);
+    --border-radius-md: clamp(4px, 1vw, 8px);
+    --border-radius-sm: clamp(3px, 0.8vw, 6px);
+    
+    /* 自適應行高 */
+    --line-height-loose: clamp(1.4, 2vw, 1.6);
+    --line-height-normal: clamp(1.3, 1.8vw, 1.4);
+    --line-height-tight: clamp(1.2, 1.5vw, 1.3);
+}
+
+/* 基礎元素自適應 */
+body {
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: var(--line-height-normal);
+    letter-spacing: 0.3px;
+}
+
+/* 容器自適應 */
+.container {
+    width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* 卡片自適應 */
+.info-card, .day-card, .activity {
+    padding: var(--card-padding);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-md);
+}
+
+/* 標題自適應 */
+h1 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+h3 {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* 導航欄自適應 */
+.quick-nav {
+    padding: clamp(0.3rem, 1vw, 0.5rem) 0;
+}
+
+.nav-item {
+    padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.6rem, 2vw, 0.8rem);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+}
+
+/* 時間軸自適應 */
+.timeline {
+    padding-left: clamp(1rem, 3vw, 2rem);
+}
+
+.time {
+    font-size: var(--font-size-sm);
+    padding: clamp(0.2rem, 1vw, 0.3rem) clamp(0.4rem, 2vw, 0.8rem);
+    border-radius: var(--border-radius-sm);
+}
+
+/* 活動內容自適應 */
+.activity h4 {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.activity p, .activity li {
+    font-size: var(--font-size-sm);
+    margin-bottom: clamp(0.3rem, 1vw, 0.6rem);
+}
+
+/* 手機版特別優化 */
+@media screen and (max-width: 768px) {
+    /* 調整容器邊距 */
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* 調整卡片樣式 */
+    .info-card, .day-card, .activity {
+        padding: calc(var(--card-padding) * 0.8);
+    }
+    
+    /* 調整導航欄 */
+    .nav-container {
+        gap: calc(var(--spacing-sm) * 0.5);
+    }
+    
+    /* 調整時間軸 */
+    .timeline {
+        padding-left: calc(var(--spacing-md) * 0.8);
+    }
+    
+    /* 優化列表顯示 */
+    .activity ul {
+        padding-left: var(--spacing-md);
+    }
+}
+
+/* 特小螢幕優化 */
+@media screen and (max-width: 320px) {
+    :root {
+        /* 進一步縮小間距 */
+        --card-padding: clamp(0.3rem, 1.5vw, 0.6rem);
+    }
+    
+    /* 調整導航項目 */
+    .nav-item {
+        padding: 0.2rem 0.4rem;
+    }
+    
+    /* 調整時間顯示 */
+    .time {
+        padding: 0.2rem 0.4rem;
+    }
+}
+
+/* 優化圖片自適應 */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 表格自適應 */
+table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+
+/* 優化表單元素自適應 */
+input, select, textarea {
+    font-size: var(--font-size-sm);
+    padding: clamp(0.3rem, 1vw, 0.5rem);
+    border-radius: var(--border-radius-sm);
+}
+
+/* 卡片內容優化 */
+.info-card {
+    padding: 0.6rem;
+}
+
+.info-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.2rem;
+    line-height: var(--line-height-tight);
+}
+
+.info-card li {
+    font-size: 0.9rem;
+    line-height: var(--line-height-tight);
+    padding: var(--spacing-xs) 0;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 活動內容優化 */
+.activity {
+    padding: 0.6rem;
+}
+
+.activity h4 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: var(--line-height-tight);
+}
+
+.activity p {
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-xs);
+    line-height: var(--line-height-normal);
+}
+
+.activity ul {
+    margin: var(--spacing-xs) 0;
+    padding-left: 1rem;
+}
+
+.activity li {
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-xs);
+    line-height: var(--line-height-normal);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 時間軸優化 */
+.time-block {
+    margin-bottom: var(--spacing-md);
+    gap: var(--spacing-sm);
+}
+
+.time {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.4rem;
+    line-height: var(--line-height-tight);
+}
+
+/* 提示框優化 */
+.notice-important,
+.notice-warning,
+.notice-tips,
+.notice-cost {
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: var(--spacing-xs) 0;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    border-radius: var(--border-radius-sm);
+}
+
+/* 手機版特別優化 */
+@media screen and (max-width: 768px) {
+    .info-container {
+        gap: var(--spacing-sm);
+    }
+    
+    .day-card {
+        padding: 0.6rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .day-card h3 {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.6rem;
+        margin-bottom: 0.4rem;
+        line-height: var(--line-height-tight);
+    }
+    
+    .timeline {
+        padding-left: var(--spacing-md);
+    }
+}
+
+/* 特小螢幕的額外優化 */
+@media screen and (max-width: 320px) {
+    .info-card,
+    .activity {
+        padding: 0.4rem;
+    }
+    
+    .info-card h3,
+    .activity h4 {
+        font-size: 0.95rem;
+    }
+    
+    .info-card li,
+    .activity li,
+    .activity p {
+        font-size: 0.85rem;
+    }
+}
