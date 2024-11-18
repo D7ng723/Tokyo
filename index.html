@@ -429,6 +429,128 @@
         .activity-food::before { background: #FF9800; }
         .activity-shopping::before { background: #9C27B0; }
         .activity-tips::before { background: #607D8B; }
+
+        /* 基礎響應式設置 */
+        :root {
+            /* 自適應字體大小 */
+            --font-size-xl: clamp(1.2rem, 4vw, 2rem);    /* 大標題 */
+            --font-size-lg: clamp(1rem, 3vw, 1.4rem);    /* 次標題 */
+            --font-size-md: clamp(0.9rem, 2.5vw, 1rem);  /* 正文 */
+            --font-size-sm: clamp(0.8rem, 2vw, 0.9rem);  /* 小字 */
+            
+            /* 自適應間距 */
+            --spacing-xl: clamp(1.2rem, 3vw, 1.8rem);
+            --spacing-lg: clamp(0.8rem, 2vw, 1.2rem);
+            --spacing-md: clamp(0.4rem, 1.5vw, 0.6rem);
+            --spacing-sm: clamp(0.2rem, 1vw, 0.4rem);
+        }
+
+        /* 頁面標題優化 */
+        .page-header {
+            min-height: clamp(150px, 30vh, 300px);
+            padding: var(--spacing-lg);
+        }
+
+        .page-header h1 {
+            font-size: var(--font-size-xl);
+        }
+
+        .sub-title {
+            font-size: var(--font-size-md);
+        }
+
+        /* 導航欄優化 */
+        .quick-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+            background: rgba(227, 242, 253, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            gap: var(--spacing-sm);
+            padding: 0 var(--spacing-sm);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav-item {
+            padding: 0.4rem 0.8rem;
+            font-size: var(--font-size-sm);
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 下拉選單優化 */
+        .day-selector select {
+            width: auto;
+            min-width: 150px;
+            padding: 0.4rem;
+            font-size: var(--font-size-sm);
+            min-height: 44px;
+        }
+
+        /* 內容卡片優化 */
+        .info-card, .day-card, .activity {
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            border-radius: 8px;
+        }
+
+        /* 時間軸優化 */
+        .time {
+            font-size: var(--font-size-sm);
+            padding: 0.3rem 0.6rem;
+        }
+
+        .activity h4 {
+            font-size: var(--font-size-md);
+        }
+
+        .activity p,
+        .activity li {
+            font-size: var(--font-size-sm);
+            line-height: 1.5;
+        }
+
+        /* 手機版特別優化 */
+        @media (max-width: 768px) {
+            .nav-container {
+                justify-content: flex-start;
+            }
+
+            .info-container {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 1rem;
+            }
+
+            .activity {
+                padding: var(--spacing-sm);
+            }
+        }
+
+        /* 特小螢幕優化 */
+        @media (max-width: 320px) {
+            .nav-item {
+                padding: 0.3rem 0.6rem;
+            }
+
+            .activity h4 {
+                font-size: 0.95rem;
+            }
+
+            .activity p,
+            .activity li {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body style="background-color: #f5f5f5;"> <!-- 設置淺灰色背景 -->
@@ -665,7 +787,7 @@
                                     <a href="https://www.narita-airport.jp/ch2/" target="_blank">(官網連結)</a>
                                 </h4>
                                 <p class="notice-warning">12月7日天氣提醒：
-                                    <br>- 夜間氣溫3-5℃（週六晚）
+                                    <br>- 夜間氣溫3-5（週六晚）
                                     <br>- 降水機率10%
                                     <br>- 建議穿著防風厚外套
                                     <br>- 準備圍巾手套
@@ -1204,13 +1326,13 @@
                             </div>
                         </div>
 
-                        <!-- 2. 入場準備 -->
+                        <!-- 2. 場準備 -->
                         <div class="time-block">
                             <span class="time">11:30-12:00</span>
                             <div class="activity activity-tips">
                                 <h4>入場準備</h4>
                                 <p class="notice-important">2024年最新入場須知：
-                                    <br>- ���提前30分鐘抵達
+                                    <br>- 提前30分鐘抵達
                                     <br>- 出示護照與門票（6,300日圓）
                                     <br>- 館內禁止拍照（戶外區域可拍）
                                     <br>- 入場後可換取精美膠卷門票</p>
