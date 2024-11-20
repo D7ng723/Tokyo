@@ -318,7 +318,7 @@ a:hover {
 
 /* Day 卡片容器優化 */
 .day-cards {
-    margin-top: 0.5rem;  /* 減少與標題的間距 */
+    margin-top: 0.5rem;  /* 減少與標題的間�� */
 }
 
 /* 手機版優化 */
@@ -576,4 +576,16 @@ html {
     .day-selector select {
         width: clamp(180px, 45vw, 250px);
     }
+}
+
+/* 3. 修改所有官網連結的顏色 */
+a[href*="://"] {
+    color: #FF6666;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+a[href*="://"]:hover {
+    color: #FF4444;
+    text-decoration: underline;
 }
